@@ -1,4 +1,4 @@
-import { FileText, Globe, PenTool, Building2, Plane, Users, Building, BarChart3, Settings } from 'lucide-react';
+import { FileText, Globe, RefreshCw, AlertTriangle } from 'lucide-react';
 
 export interface Service {
   title: string;
@@ -7,92 +7,64 @@ export interface Service {
   image: string;
   imagePosition?: 'left' | 'right';
   Icon?: typeof FileText;
-  icon?: string; // emoji for Hero section
+  icon?: string;
 }
+
+const unsplash = (id: string, w = 800) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 export const services: Service[] = [
   {
-    title: 'Company Formation & Corporate Setup',
-    subtitle: 'UAE Business',
-    description: 'New company formation in Mainland, Free Zones, and Offshore jurisdictions, business activity and license selection advisory.',
-    image: '/company-formation.jpg',
+    title: 'Получение гражданства',
+    subtitle: 'Консультации',
+    description:
+      'Разбор оснований, сроков и документов — без обещаний «гарантированного» результата, с реалистичной оценкой возможностей.',
+    image: unsplash('photo-1434030216411-0b793f4b4173'),
     imagePosition: 'left',
-    Icon: Building2,
-    icon: '🏢',
-  },
-  {
-    title: 'Document Clearance & PRO Services',
-    subtitle: 'Document Services',
-    description: 'Government document clearance and processing, immigration and visa-related documentation support, liaison with UAE government authorities.',
-    image: '/document-clearing.jpg',
-    imagePosition: 'left',
-    Icon: FileText,
-    icon: '📄',
-  },
-  {
-    title: 'Translation & Document Legalization',
-    subtitle: 'Document Services',
-    description: 'Certified legal and official document translation, document legalization and attestation at local embassies and consulates in the UAE.',
-    image: '/translation-legalization.jpg',
-    imagePosition: 'right',
     Icon: Globe,
-    icon: '🌐',
-  },
-  {
-    title: 'Power of Attorney & Notary Services',
-    subtitle: 'Legal Services',
-    description: 'Power of Attorney drafting coordination, notarization and attestation within the UAE, coordination with UAE notary public.',
-    image: '/power-of-attorney.jpg',
-    imagePosition: 'right',
-    Icon: PenTool,
-    icon: '✍️',
-  },
-  {
-    title: 'Visa & Immigration Services',
-    subtitle: 'Immigration Services',
-    description: 'Golden Visa issuance and full support, investor, partner, employment, and family visa issuance, residency renewal support.',
-    image: '/visa-immigration.jpg',
-    imagePosition: 'left',
-    Icon: Plane,
     icon: '🛂',
   },
   {
-    title: 'Labor & Employment Services',
-    subtitle: 'Employment Services',
-    description: 'Labor file opening and management (MOHRE), employment contracts preparation and registration, work permit issuance.',
-    image: '/labor-employment.jpg',
+    title: 'Легальное трудоустройство в Европе',
+    subtitle: 'Консультации',
+    description:
+      'Варианты оформления работы, типовые требования работодателя и миграционных органов, на что обратить внимание до переезда.',
+    image: unsplash('photo-1521737711867-e3b97375f902'),
     imagePosition: 'left',
-    Icon: Users,
-    icon: '👥',
+    Icon: FileText,
+    icon: '💼',
   },
   {
-    title: 'Banking Support Services',
-    subtitle: 'Financial Services',
-    description: 'Bank compliance and KYC documentation preparation, banking support and coordination.',
-    image: '/banking-support.jpg',
+    title: 'ВНЖ, разрешения на работу, PESEL, номера, регистрации',
+    subtitle: 'Консультации',
+    description:
+      'Поясняем назначение документов и статусов, типовые шаги и отличия между странами — в рамках информационной консультации.',
+    image:
+      'https://i.pinimg.com/1200x/12/f7/88/12f7886fbea32e723975f380a3dbbd2d.jpg',
     imagePosition: 'right',
-    Icon: Building,
-    icon: '🏦',
+    Icon: FileText,
+    icon: '📋',
   },
   {
-    title: 'Tax Residency & Compliance Support',
-    subtitle: 'Tax Services',
-    description: 'Tax Residency Certificate application support, UAE tax residency structuring guidance, corporate tax registration.',
-    image: '/tax-residency.jpg',
+    title: 'Смена статуса пребывания',
+    subtitle: 'Консультации',
+    description:
+      'Когда смена статуса реалистична, какие риски и сроки чаще встречаются, какие документы обычно запрашивают.',
+    image: unsplash('photo-1450101499163-c8848c66ca85'),
     imagePosition: 'right',
-    Icon: BarChart3,
-    icon: '📊',
+    Icon: RefreshCw,
+    icon: '🔄',
   },
   {
-    title: 'Ongoing Corporate & Administrative Support',
-    subtitle: 'Administrative Services',
-    description: 'Corporate document maintenance and renewals, business support services for shareholders and executives.',
-    image: '/ongoing-support.jpg',
+    title: 'Риски, сроки и варианты действий',
+    subtitle: 'Консультации',
+    description:
+      'Честно обсуждаем ограничения, вероятные задержки и альтернативные сценарии — без иллюзий и лишних затрат.',
+    image: unsplash('photo-1454165804606-c3d57bc86b40'),
     imagePosition: 'left',
-    Icon: Settings,
-    icon: '⚙️',
+    Icon: AlertTriangle,
+    icon: '⚖️',
   },
 ];
 
-// Hero section uses first 5 services
-export const heroServices = services.slice(0, 5);
+export const heroServices = services;

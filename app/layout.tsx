@@ -1,64 +1,64 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://flavusbusiness.com"),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Flavus Business Services — Corporate Advisory & Document Clearing in UAE",
-    template: "%s | Flavus Business Services",
+    default:
+      "Консультации по трудоустройству и легализации в Европе — информационная поддержка",
+    template: "%s | Консультации в Европе",
   },
   description:
-    "Flavus Business Services provides premium corporate advisory and document clearing solutions in the UAE — from company formation and Golden Visa support to residency management, legalization and certified translation.",
+    "Индивидуальные информационно-консультационные услуги по легальному трудоустройству и пребыванию в странах Европы. Онлайн или лично.",
   keywords: [
-    "Flavus Business Services",
-    "corporate advisory UAE",
-    "document clearing Dubai",
-    "company formation UAE",
-    "Golden Visa services",
-    "residency management UAE",
-    "PRO services Dubai",
+    "консультации Европа",
+    "легальное трудоустройство Европа",
+    "ВНЖ Европа",
+    "PESEL",
+    "разрешение на работу",
+    "миграционные консультации",
   ],
-  authors: [{ name: "Flavus Business Services" }],
+  authors: [{ name: "Консультации — Европа" }],
   openGraph: {
     type: "website",
     url: "/",
-    title: "Flavus Business Services — Corporate Advisory & Document Clearing in UAE",
+    title:
+      "Консультации по трудоустройству и легализации в Европе — информационная поддержка",
     description:
-      "End‑to‑end corporate advisory and document clearing services in the UAE: company setup, Golden Visa, residency, legalization, translation and ongoing corporate support.",
-    siteName: "Flavus Business Services",
+      "Поясняем реальные возможности, документы и шаги — без иллюзий и лишних затрат.",
+    siteName: "Консультации в Европе",
     images: [
       {
-        url: "/about-image.png",
+        url: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1200&h=630&q=80",
         width: 1200,
         height: 630,
-        alt: "Flavus Business Services — corporate advisory and document clearing in the UAE",
+        alt: "Европа — информационные консультации по легализации",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Flavus Business Services — Corporate Advisory & Document Clearing in UAE",
+    title:
+      "Консультации по трудоустройству и легализации в Европе",
     description:
-      "Premium corporate advisory and document clearing solutions in the UAE for entrepreneurs, investors and businesses.",
-    images: ["/about-image.png"],
+      "Информационная поддержка. Законно. По сути.",
+    images: [
+      "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1200&h=630&q=80",
+    ],
   },
   icons: {
-    icon: [
-      { url: "/favicon.png", type: "image/png" },
-    ],
-    shortcut: "/favicon.png",
-    apple: "/favicon.png",
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
   },
 };
 
@@ -68,12 +68,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="ru">
+      <body className={`${geistMono.variable} antialiased`}>{children}</body>
     </html>
   );
 }

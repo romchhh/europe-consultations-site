@@ -7,36 +7,34 @@ export default function FAQs() {
 
   const faqItems = [
     {
-      question: 'What services does Flavus Business Services provide?',
-      answer: 'Flavus Business Services provides comprehensive corporate advisory and document clearing services including company formation, Golden Visa processing, residency and labor file management, document legalization and certified translation, as well as full document clearance services.',
+      question: 'Что именно вы предоставляете — это юридические услуги?',
+      answer:
+        'Мы оказываем информационно-консультационные услуги: разбираем вашу ситуацию, объясняем типовые требования, документы и возможные шаги. Это не замена официальному миграционному или юридическому представительству в конкретной стране.',
     },
     {
-      question: 'Where is Flavus Business Services located?',
-      answer: 'Flavus Business Services is a UAE-based firm operating across the Emirates, supporting entrepreneurs and investors throughout the region.',
+      question: 'Как проходит консультация?',
+      answer:
+        'Консультация может быть онлайн (звонок или видео) или лично — по предварительной договорённости. Перед встречей полезно кратко описать цель и страну интереса.',
     },
     {
-      question: 'What types of businesses can Flavus assist with?',
-      answer: 'We support entrepreneurs and investors across various industries, providing structured solutions for company formation, compliance, and ongoing corporate maintenance in the UAE.',
+      question: 'Гарантируете ли вы визу, ВНЖ или гражданство?',
+      answer:
+        'Нет. Решения принимают государственные органы. Мы даём ознакомительную и рекомендательную информацию, чтобы вы понимали реалистичные варианты, риски и сроки — без иллюзий.',
     },
     {
-      question: 'How does Flavus ensure regulatory compliance?',
-      answer: 'Operating in a highly regulated environment, we combine local expertise with international standards to deliver structured, transparent solutions that ensure full regulatory compliance with precision and efficiency.',
+      question: 'Как оплатить консультацию?',
+      answer:
+        'Оплата возможна через PayU, Stripe, СБП или другие способы — по ссылке «Оплатить консультацию». Оплата подтверждает заказ информационно-консультационной услуги.',
     },
     {
-      question: 'What makes Flavus different from other corporate advisory firms?',
-      answer: 'We don\'t just process applications — we build secure pathways for long-term business success in the UAE. Our approach combines Compliance, Clarity, and Continuity to support your business journey.',
+      question: 'Где узнать больше новостей и материалов?',
+      answer:
+        'Дополнительные материалы и актуальная информация публикуются в нашем Telegram-канале (подписка). Ссылки на соцсети — внизу страницы.',
     },
     {
-      question: 'How can I get started with Flavus Business Services?',
-      answer: 'You can contact us through our enquiry form or reach out directly to discuss your specific needs. We provide consultations to understand your requirements and offer tailored solutions for your business.',
-    },
-    {
-      question: 'What is the typical timeline for company formation?',
-      answer: 'The timeline varies depending on the type of company and jurisdiction, but typically ranges from 2-4 weeks for mainland companies and 1-2 weeks for free zone companies. We expedite the process wherever possible while ensuring all documentation is complete and compliant.',
-    },
-    {
-      question: 'Do you provide ongoing support after company formation?',
-      answer: 'Yes, we provide comprehensive ongoing support including annual compliance management, visa renewals, labor file maintenance, and corporate governance advisory. We are committed to supporting your business throughout its entire lifecycle in the UAE.',
+      question: 'Работаете ли вы только с одной страной ЕС?',
+      answer:
+        'Фокус — легальное трудоустройство и пребывание в странах Европы в целом; конкретные нюансы зависят от выбранной страны и вашего кейса — это уточняется на консультации.',
     },
   ];
 
@@ -47,23 +45,21 @@ export default function FAQs() {
   return (
     <section id="faqs" className="relative py-24 bg-gradient-to-br from-white via-[#F6F6F6] to-white">
       <div className="max-w-[1200px] mx-auto px-0 md:px-8">
-        {/* Header */}
         <div className="text-center mb-16 px-8 md:px-0">
-          <p className="text-[#6F6F6E] text-xs font-semibold mb-3 tracking-[0.2em] uppercase" style={{ fontFamily: 'Corbel, sans-serif' }}>Frequently Asked Questions</p>
           <h2 className="text-5xl md:text-6xl font-bold text-[#222221] leading-tight mb-4" style={{ fontFamily: 'Corbel, sans-serif' }}>
-            Questions & Answers
+            Вопросы и ответы
           </h2>
         </div>
 
-        {/* FAQ Accordion - Single Block */}
         <div className="bg-white rounded-none md:rounded-3xl p-8 md:p-12 shadow-xl border border-[#6F6F6E]/10">
           <div className="space-y-0">
             {faqItems.map((item, index) => (
               <div
-                key={index}
+                key={item.question}
                 className={`border-b border-[#E0E0D8] last:border-b-0 ${index === 0 ? 'pt-0' : 'pt-0'}`}
               >
                 <button
+                  type="button"
                   onClick={() => toggleAccordion(index)}
                   className="w-full flex items-center justify-between py-6 text-left hover:bg-[#F6F6F6]/50 transition-colors rounded-lg px-2 -mx-2"
                 >
@@ -76,7 +72,7 @@ export default function FAQs() {
                 </button>
                 <div
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    openIndex === index ? 'max-h-96 pb-5' : 'max-h-0'
+                    openIndex === index ? 'max-h-[480px] pb-5' : 'max-h-0'
                   }`}
                 >
                   <div className="px-2 text-[#222221] text-base font-medium leading-relaxed text-justify md:text-left" style={{ fontFamily: 'Corbel, sans-serif' }}>
