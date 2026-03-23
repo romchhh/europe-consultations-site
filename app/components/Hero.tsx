@@ -68,7 +68,7 @@ export default function Hero() {
                   <p className="text-white/90 text-base max-w-xl leading-relaxed" style={{ fontFamily: 'Corbel, sans-serif' }}>
                     Предоставляем индивидуальные консультации по вопросам легального трудоустройства и пребывания в странах Европы. Объясняем реальные возможности, документы и шаги — без иллюзий и лишних затрат.
                   </p>
-                  <div className="flex flex-col sm:flex-row flex-wrap gap-3 mt-6">
+                  <div className="flex flex-col sm:flex-row sm:items-stretch gap-3 mt-6">
                     <Link
                       href="#contact"
                       onClick={(e) => {
@@ -78,7 +78,7 @@ export default function Hero() {
                           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }
                       }}
-                      className="inline-block text-center backdrop-blur-xl bg-white/20 hover:bg-white/30 border border-white/30 text-white font-semibold px-8 py-3.5 rounded-lg transition-all shadow-2xl hover:shadow-[0_0_30px_rgba(249,220,10,0.3)] hover:border-[#F9DC0A]/50"
+                      className="flex w-full flex-1 items-center justify-center text-center min-h-[3.25rem] sm:min-h-[3.5rem] px-5 py-3.5 text-base font-semibold rounded-lg backdrop-blur-xl bg-white/20 hover:bg-white/30 border border-white/30 text-white transition-all shadow-2xl hover:shadow-[0_0_30px_rgba(249,220,10,0.3)] hover:border-[#F9DC0A]/50"
                       style={{ fontFamily: 'Corbel, sans-serif' }}
                     >
                       Записаться на консультацию
@@ -87,7 +87,7 @@ export default function Hero() {
                       href={siteLinks.payment}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block text-center bg-[#F9DC0A] hover:bg-[#e5ca09] text-[#222221] font-semibold px-8 py-3.5 rounded-lg transition-all shadow-lg"
+                      className="flex w-full flex-1 items-center justify-center text-center min-h-[3.25rem] sm:min-h-[3.5rem] px-5 py-3.5 text-base font-semibold rounded-lg bg-[#F9DC0A] hover:bg-[#e5ca09] text-[#222221] transition-all shadow-lg"
                       style={{ fontFamily: 'Corbel, sans-serif' }}
                     >
                       Оплатить консультацию (PayU, Stripe, СБП и др.)

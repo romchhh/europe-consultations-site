@@ -13,122 +13,137 @@ const consultationTopics = [
   'Рисков, сроков и вариантов действий',
 ];
 
+const principles = ['Законность', 'Ясность', 'Честность'];
+
 export default function About() {
   return (
-    <section id="about" className="relative pt-120 pb-24 md:py-24 bg-[#F5F5F0] z-10 md:z-auto">
-      <div className="max-w-[1400px] mx-auto px-0 md:px-8">
-        <div className="relative flex flex-col lg:items-start lg:min-h-[800px]">
-          <div className="relative z-20 w-full lg:w-[55%] lg:pr-8 flex items-center lg:items-start">
-            <div className="bg-[#FAF5F1] rounded-none md:rounded-3xl p-8 md:p-12 shadow-2xl w-full">
-              <div className="mb-8">
-                <h2 className="text-4xl md:text-5xl font-bold text-[#222221] leading-tight mb-3 text-left" style={{ fontFamily: 'Corbel, sans-serif' }}>
-                  Консультации по трудоустройству и легализации в Европе
-                </h2>
-              </div>
+    <section
+      id="about"
+      className="relative pt-28 pb-24 md:py-32 bg-[#F5F5F0] z-10 md:z-auto"
+    >
+      <div className="max-w-[1320px] mx-auto px-6 md:px-10">
 
-              <div className="space-y-5 mb-8 text-[#222221] max-w-[640px]">
-                <p className="text-lg font-medium leading-relaxed text-justify md:text-left" style={{ fontFamily: 'Corbel, sans-serif' }}>
-                  Наша работа — <span className="font-bold">информационно-консультационная поддержка</span> по вопросам легального трудоустройства и пребывания в странах Европы.
-                </p>
-                <p className="text-lg font-medium leading-relaxed text-justify md:text-left" style={{ fontFamily: 'Corbel, sans-serif' }}>
-                  Объясняем реальные возможности, документы и шаги — <span className="font-bold">без иллюзий и лишних затрат</span>. Поясняем возможные варианты, требования и риски в рамках консультации.
-                </p>
+        {/* Hero row */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20 md:mb-28">
 
-                <div className="bg-white/80 rounded-xl p-4 md:p-5 mt-6">
-                  <p className="text-base md:text-lg font-bold text-[#222221] mb-3" style={{ fontFamily: 'Corbel, sans-serif' }}>
-                    Консультируем по вопросам:
-                  </p>
-                  <ul className="space-y-2 text-[#222221] text-sm md:text-base font-medium list-none" style={{ fontFamily: 'Corbel, sans-serif' }}>
-                    {consultationTopics.map((line) => (
-                      <li key={line} className="flex gap-2">
-                        <span className="text-[#F9DC0A] font-bold shrink-0">—</span>
-                        <span>{line}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+          {/* Left: text */}
+          <div>
+            <p
+              className="text-xs font-bold tracking-[0.2em] uppercase text-[#6F6F6E] mb-5"
+              style={{ fontFamily: 'Corbel, sans-serif' }}
+            >
+              О нас
+            </p>
+            <h2
+              className="text-4xl md:text-5xl font-bold text-[#222221] leading-[1.15] mb-8"
+              style={{ fontFamily: 'Corbel, sans-serif' }}
+            >
+              Консультации по трудоустройству и легализации в Европе
+            </h2>
 
-              </div>
+            <div
+              className="space-y-4 text-[#444443] text-base md:text-lg leading-relaxed mb-10"
+              style={{ fontFamily: 'Corbel, sans-serif' }}
+            >
+              <p>
+                Наша работа — <strong className="text-[#222221]">информационно-консультационная поддержка</strong> по вопросам легального трудоустройства и пребывания в странах Европы.
+              </p>
+              <p>
+                Объясняем реальные возможности, документы и шаги —{' '}
+                <strong className="text-[#222221]">без иллюзий и лишних затрат</strong>.
+              </p>
+            </div>
+
+            {/* Topics */}
+            <div style={{ fontFamily: 'Corbel, sans-serif' }}>
+              <p className="text-xs font-bold tracking-[0.18em] uppercase text-[#6F6F6E] mb-4">
+                Консультируем по вопросам
+              </p>
+              <ul className="space-y-3">
+                {consultationTopics.map((topic) => (
+                  <li key={topic} className="flex items-start gap-3">
+                    <span
+                      className="mt-[6px] w-[6px] h-[6px] rounded-full bg-[#F9DC0A] shrink-0"
+                    />
+                    <span className="text-[#222221] text-base font-medium">{topic}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
-          <div className="relative mt-6 w-full lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-[65%]">
-            <div className="relative h-[380px] md:h-[460px] lg:h-full lg:min-h-[800px] rounded-3xl overflow-hidden bg-[#F5F5F0]">
-              <Image
-                src={ABOUT_IMG}
-                alt="Европейский город — консультации по легализации"
-                fill
-                className="object-cover object-center"
-                priority
-                sizes="(min-width: 1024px) 65vw, 100vw"
-              />
+          {/* Right: image */}
+          <div className="relative h-[420px] md:h-[560px] rounded-2xl overflow-hidden">
+            <Image
+              src={ABOUT_IMG}
+              alt="Европейский город — консультации по легализации"
+              fill
+              className="object-cover object-center"
+              priority
+              sizes="(min-width: 1024px) 50vw, 100vw"
+            />
+            {/* subtle overlay */}
+            <div className="absolute inset-0 bg-[#222221]/10" />
+          </div>
+        </div>
+
+        {/* Principles */}
+        <div
+          className="flex flex-col md:flex-row justify-center items-center gap-0 border-t border-b border-[#D8D8D2] py-8 mb-16"
+          style={{ fontFamily: 'Corbel, sans-serif' }}
+        >
+          {principles.map((p, i) => (
+            <div key={p} className="flex items-center">
+              <span className="flex items-center gap-2 px-8 md:px-12 py-2 text-base md:text-lg font-bold text-[#222221] tracking-wide">
+                <span className="text-[#F9DC0A]">✓</span>
+                {p}
+              </span>
+              {i < principles.length - 1 && (
+                <span className="hidden md:block w-px h-5 bg-[#D8D8D2]" />
+              )}
             </div>
-          </div>
+          ))}
         </div>
 
-        <div className="mt-8 md:mt-10 max-w-4xl mx-auto p-2 md:p-3 text-center">
-          <p className="text-xl md:text-2xl font-bold text-[#222221] mb-5 md:mb-6" style={{ fontFamily: 'Corbel, sans-serif' }}>
-            Наши принципы
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 text-[#222221] text-base md:text-xl font-bold" style={{ fontFamily: 'Corbel, sans-serif' }}>
-            <span className="flex items-center gap-2">
-              <span className="text-[#F9DC0A] text-xl md:text-2xl">✓</span>
-              <span>Законность</span>
-            </span>
-            <span className="text-[#6F6F6E] hidden md:inline text-lg">|</span>
-            <span className="flex items-center gap-2">
-              <span className="text-[#F9DC0A] text-xl md:text-2xl">✓</span>
-              <span>Ясность</span>
-            </span>
-            <span className="text-[#6F6F6E] hidden md:inline text-lg">|</span>
-            <span className="flex items-center gap-2">
-              <span className="text-[#F9DC0A] text-xl md:text-2xl">✓</span>
-              <span>Честность</span>
-            </span>
-          </div>
-        </div>
-
-        <div className="mt-6 md:mt-8 max-w-4xl mx-auto bg-[#FAF5F1] rounded-2xl p-6 md:p-8 shadow-lg border border-white/70 text-center">
-          <p className="text-lg md:text-xl font-semibold text-[#222221]" style={{ fontFamily: 'Corbel, sans-serif' }}>
-            👉 Консультация — онлайн или лично.
+        {/* CTA */}
+        <div
+          className="max-w-2xl mx-auto text-center"
+          style={{ fontFamily: 'Corbel, sans-serif' }}
+        >
+          <p className="text-base md:text-lg text-[#444443] mb-7">
+            Консультация — онлайн или лично. Оплата подтверждает заказ информационно-консультационной услуги.
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center flex-wrap gap-3 md:gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 mb-6">
             <a
               href={siteLinks.payment}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex justify-center items-center bg-[#222221] hover:bg-[#6F6F6E] text-white font-semibold px-6 py-3 rounded-lg transition-all shadow-lg text-center"
-              style={{ fontFamily: 'Corbel, sans-serif' }}
+              className="inline-flex justify-center items-center bg-[#222221] hover:bg-[#3a3a39] text-white font-semibold px-7 py-3.5 rounded-xl transition-colors text-sm md:text-base"
             >
-              Оплатить консультацию (PayU, Stripe, СБП и др.)
+              Оплатить консультацию
             </a>
             <Link
               href="#contact"
-              className="inline-flex justify-center items-center border-2 border-[#222221] text-[#222221] hover:bg-[#222221] hover:text-white font-semibold px-6 py-3 rounded-lg transition-all text-center"
-              style={{ fontFamily: 'Corbel, sans-serif' }}
+              className="inline-flex justify-center items-center border border-[#222221] text-[#222221] hover:bg-[#222221] hover:text-white font-semibold px-7 py-3.5 rounded-xl transition-colors text-sm md:text-base"
             >
               Связаться с нами
             </Link>
           </div>
 
-          <p className="text-sm text-[#6F6F6E] pt-3" style={{ fontFamily: 'Corbel, sans-serif' }}>
-            Оплата подтверждает заказ информационно-консультационной услуги.
-          </p>
-
-          <p className="text-base text-[#222221] pt-2" style={{ fontFamily: 'Corbel, sans-serif' }}>
+          <p className="text-sm text-[#6F6F6E]">
             Больше информации в{' '}
             <a
               href={siteLinks.telegramChannel}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-bold text-[#222221] underline decoration-[#F9DC0A] decoration-2 underline-offset-2 hover:text-[#6F6F6E]"
+              className="font-bold text-[#222221] underline decoration-[#F9DC0A] decoration-2 underline-offset-2 hover:text-[#6F6F6E] transition-colors"
             >
               Telegram
             </a>
-            {' '}(подписка).
           </p>
         </div>
+
       </div>
     </section>
   );
