@@ -8,9 +8,10 @@ const ABOUT_IMG =
 const consultationTopics = [
   'Получение гражданства',
   'Легального трудоустройства в Европе',
-  'ВНЖ, разрешений на работу, PESEL, номеров, регистраций',
+  'ВНЖ, разрешений на работу, номеров, регистраций',
   'Смены статуса пребывания',
   'Рисков, сроков и вариантов действий',
+  'Открытие р/с в банках Европы для физических и юридических лиц',
 ];
 
 const principles = ['Законность', 'Ясность', 'Честность'];
@@ -41,21 +42,8 @@ export default function About() {
               Консультации по трудоустройству и легализации в Европе
             </h2>
 
-            <div
-              className="space-y-4 text-[#444443] text-base md:text-lg leading-relaxed mb-10"
-              style={{ fontFamily: 'Corbel, sans-serif' }}
-            >
-              <p>
-                Наша работа — <strong className="text-[#222221]">информационно-консультационная поддержка</strong> по вопросам легального трудоустройства и пребывания в странах Европы.
-              </p>
-              <p>
-                Объясняем реальные возможности, документы и шаги —{' '}
-                <strong className="text-[#222221]">без иллюзий и лишних затрат</strong>.
-              </p>
-            </div>
-
             {/* Topics */}
-            <div style={{ fontFamily: 'Corbel, sans-serif' }}>
+            <div className="mt-2 md:mt-0" style={{ fontFamily: 'Corbel, sans-serif' }}>
               <p className="text-xs font-bold tracking-[0.18em] uppercase text-[#6F6F6E] mb-4">
                 Консультируем по вопросам
               </p>

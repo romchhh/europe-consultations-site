@@ -1,4 +1,4 @@
-import { FileText, Globe, RefreshCw, AlertTriangle } from 'lucide-react';
+import { FileText, Globe, RefreshCw, AlertTriangle, Building2 } from 'lucide-react';
 
 export interface Service {
   title: string;
@@ -35,7 +35,7 @@ export const services: Service[] = [
     icon: '💼',
   },
   {
-    title: 'ВНЖ, разрешения на работу, PESEL, номера, регистрации',
+    title: 'ВНЖ, разрешения на работу, номера, регистрации',
     subtitle: 'Консультации',
     description:
       'Поясняем назначение документов и статусов, типовые шаги и отличия между странами — в рамках информационной консультации.',
@@ -64,6 +64,16 @@ export const services: Service[] = [
     imagePosition: 'left',
     Icon: AlertTriangle,
     icon: '⚖️',
+  },
+  {
+    title: 'Бизнес',
+    subtitle: 'Консультации',
+    description:
+      'Консультации по открытию предприятий (фирм), налогообложению (в т.ч. минимизация налогообложения), открытию р/с в банках Европы.',
+    image: unsplash('photo-1486406146926-c627a92ad1ab'),
+    imagePosition: 'right',
+    Icon: Building2,
+    icon: '🏢',
   },
 ];
 

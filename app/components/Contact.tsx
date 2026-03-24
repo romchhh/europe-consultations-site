@@ -10,9 +10,12 @@ const CONTACT_BG =
 const SERVICE_LABELS: Record<string, string> = {
   citizenship: 'Получение гражданства',
   'employment-eu': 'Легальное трудоустройство в Европе',
-  'permits-pesel': 'ВНЖ, разрешения, PESEL, регистрации',
+  'permits-pesel': 'ВНЖ, разрешения, номера, регистрации',
   'status-change': 'Смена статуса пребывания',
   risks: 'Риски, сроки и варианты действий',
+  'europe-bank': 'Открытие р/с в банках Европы для физических и юридических лиц',
+  business:
+    'Бизнес: открытие предприятий (фирм), налогообложение (в т.ч. минимизация), р/с в банках Европы',
   other: 'Другое',
 };
 
@@ -203,9 +206,11 @@ export default function Contact() {
                       >
                         <option value="citizenship" className="text-[#222221]">Получение гражданства</option>
                         <option value="employment-eu" className="text-[#222221]">Легальное трудоустройство в Европе</option>
-                        <option value="permits-pesel" className="text-[#222221]">ВНЖ, разрешения, PESEL, регистрации</option>
+                        <option value="permits-pesel" className="text-[#222221]">ВНЖ, разрешения, номера, регистрации</option>
                         <option value="status-change" className="text-[#222221]">Смена статуса пребывания</option>
                         <option value="risks" className="text-[#222221]">Риски, сроки и варианты действий</option>
+                        <option value="europe-bank" className="text-[#222221]">Открытие р/с в банках Европы</option>
+                        <option value="business" className="text-[#222221]">Бизнес</option>
                         <option value="other" className="text-[#222221]">Другое</option>
                       </select>
                     </div>
