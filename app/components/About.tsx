@@ -20,7 +20,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative pt-28 pb-24 md:py-32 bg-[#F5F5F0] z-10 md:z-auto"
+      className="relative mt-96 md:mt-0 pt-28 pb-24 md:py-32 bg-[#F5F5F0] z-10 md:z-auto"
     >
       <div className="max-w-[1320px] mx-auto px-6 md:px-10">
 
