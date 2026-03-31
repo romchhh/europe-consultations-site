@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { heroServices } from '../data/services';
-import { siteLinks } from '../data/site';
 
 const HERO_BG =
   "https://i.pinimg.com/1200x/b8/8b/8b/b88b8bcff6dec43c322a348dc32a219d.jpg";
@@ -56,48 +55,17 @@ export default function Hero() {
             <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
               <div className="grid md:grid-cols-2 gap-16 items-center">
                 <div className="text-left space-y-6 pt-[44rem] md:pt-10">
-                  <p className="text-white text-xl font-normal tracking-wide" style={{ fontFamily: 'Corbel, sans-serif' }}>
-                    Информационная поддержка
-                  </p>
                   <h1 className="text-left text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.15] tracking-tight" style={{ fontFamily: 'Corbel, sans-serif' }}>
                     Консультации по трудоустройству и легализации в Европе
                   </h1>
+                  <p className="text-white text-xl font-normal tracking-wide" style={{ fontFamily: 'Corbel, sans-serif' }}>
+                    Информационная поддержка
+                  </p>
                   <p className="text-white text-lg font-light" style={{ fontFamily: 'Corbel, sans-serif' }}>
                     Законно. По сути.
                   </p>
                   <p className="text-white/90 text-base max-w-xl leading-relaxed" style={{ fontFamily: 'Corbel, sans-serif' }}>
                     Предоставляем индивидуальные консультации по вопросам легального трудоустройства и пребывания в странах Европы. Объясняем реальные возможности, документы и шаги — без иллюзий и лишних затрат.
-                  </p>
-                  <div className="flex flex-col sm:flex-row sm:items-stretch gap-3 mt-6">
-                    <Link
-                      href="#contact"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const element = document.getElementById('contact');
-                        if (element) {
-                          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }
-                      }}
-                      className="flex w-full flex-1 items-center justify-center text-center min-h-[3.25rem] sm:min-h-[3.5rem] px-5 py-3.5 text-base font-semibold rounded-lg backdrop-blur-xl bg-white/20 hover:bg-white/30 border border-white/30 text-white transition-all shadow-2xl hover:shadow-[0_0_30px_rgba(249,220,10,0.3)] hover:border-[#F9DC0A]/50"
-                      style={{ fontFamily: 'Corbel, sans-serif' }}
-                    >
-                      Записаться на консультацию
-                    </Link>
-                    <a
-                      href={siteLinks.payment}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex w-full flex-1 items-center justify-center text-center min-h-[3.25rem] sm:min-h-[3.5rem] px-5 py-3.5 text-base font-semibold rounded-lg bg-[#F9DC0A] hover:bg-[#e5ca09] text-[#222221] transition-all shadow-lg"
-                      style={{ fontFamily: 'Corbel, sans-serif' }}
-                    >
-                      Оплатить консультацию (PayU, Stripe, СБП и др.)
-                    </a>
-                  </div>
-                  <p
-                    className="text-[#222221] md:text-white/75 text-sm pt-1 max-md:bg-white/95 max-md:px-3 max-md:py-2.5 max-md:rounded-lg max-md:mt-2"
-                    style={{ fontFamily: 'Corbel, sans-serif' }}
-                  >
-                    👉 Консультация — онлайн или лично. Оплата подтверждает заказ информационно-консультационной услуги.
                   </p>
                 </div>
 

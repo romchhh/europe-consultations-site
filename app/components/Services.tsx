@@ -9,9 +9,6 @@ export default function Services() {
           <h2 className="text-4xl md:text-5xl font-bold text-[#222221] leading-tight" style={{ fontFamily: 'Corbel, sans-serif' }}>
             Направления консультаций
           </h2>
-          <p className="text-[#6F6F6E] mt-3 max-w-2xl mx-auto text-base" style={{ fontFamily: 'Corbel, sans-serif' }}>
-            Информационно-консультационные услуги — не юридическое или миграционное сопровождение «под ключ», а разбор вашей ситуации и вариантов.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

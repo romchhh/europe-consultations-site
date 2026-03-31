@@ -2,19 +2,51 @@
 
 import { useState } from 'react';
 
+const MACRO_ICON = '🔹';
+
+type FaqItem = {
+  question: string;
+  answer: string | string[];
+};
+
+function FaqAnswer({ answer }: { answer: string | string[] }) {
+  const parts = Array.isArray(answer) ? answer : [answer];
+
+  if (parts.length === 1) {
+    return (
+      <span>{parts[0]}</span>
+    );
+  }
+
+  return (
+    <ul className="space-y-3 list-none pl-0">
+      {parts.map((line) => (
+        <li key={line} className="flex gap-2.5">
+          <span className="shrink-0 select-none" aria-hidden>
+            {MACRO_ICON}
+          </span>
+          <span>{line}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export default function FAQs() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const faqItems = [
+  const faqItems: FaqItem[] = [
     {
-      question: 'Что именно вы предоставляете — это юридические услуги?',
+      question: 'Что именно вы предоставляете?',
       answer:
         'Мы оказываем информационно-консультационные услуги: разбираем вашу ситуацию, объясняем типовые требования, документы и возможные шаги. Это не замена официальному миграционному или юридическому представительству в конкретной стране.',
     },
     {
       question: 'Как проходит консультация?',
-      answer:
-        'Консультация может быть онлайн (звонок или видео) или лично — по предварительной договорённости. Перед встречей полезно кратко описать цель и страну интереса.',
+      answer: [
+        'Консультация может быть онлайн (звонок/видео) или лично (офис).',
+        'Перед встречей полезно кратко описать цель и страну интереса через контактную форму.',
+      ],
     },
     {
       question: 'Гарантируете ли вы визу, ВНЖ или гражданство?',
@@ -23,13 +55,16 @@ export default function FAQs() {
     },
     {
       question: 'Как оплатить консультацию?',
-      answer:
-        'Оплата возможна через PayU, Stripe, СБП или другие способы — по ссылке «Оплатить консультацию». Оплата подтверждает заказ информационно-консультационной услуги.',
+      answer: [
+        'Оплата возможна через PayU, Stripe, СБП или другие способы — по ссылке «Оплатить консультацию».',
+        'На сайте или в Telegram-канале (кнопка «Premium»).',
+        'Оплата подтверждает заказ информационно-консультационной услуги.',
+      ],
     },
     {
-      question: 'Где узнать больше новостей и материалов?',
+      question: 'Где узнать больше информации?',
       answer:
-        'Дополнительные материалы и актуальная информация публикуются в нашем Telegram-канале (подписка). Ссылки на соцсети — внизу страницы.',
+        'Дополнительные материалы и актуальная информация публикуются в нашем Telegram-канале (подписка платная, 5 евро/месяц). Ссылки на соцсети — внизу страницы.',
     },
     {
       question: 'Работаете ли вы только с одной страной ЕС?',
@@ -85,11 +120,11 @@ export default function FAQs() {
                 </button>
                 <div
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    openIndex === index ? 'max-h-[480px] pb-5' : 'max-h-0'
+                    openIndex === index ? 'max-h-[720px] pb-5' : 'max-h-0'
                   }`}
                 >
                   <div className="pl-14 pr-2 pb-1 text-[#222221] text-base font-medium leading-relaxed text-justify md:text-left" style={{ fontFamily: 'Corbel, sans-serif' }}>
-                    {item.answer}
+                    <FaqAnswer answer={item.answer} />
                   </div>
                 </div>
               </div>
