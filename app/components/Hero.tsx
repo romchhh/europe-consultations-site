@@ -1,14 +1,20 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { heroServices } from '../data/services';
+import type { Service } from "../data/services";
+import type { Messages } from "../../lib/messages/types";
 
 const HERO_BG =
   "https://i.pinimg.com/1200x/b8/8b/8b/b88b8bcff6dec43c322a348dc32a219d.jpg";
 
-export default function Hero() {
+type Props = {
+  hero: Messages["hero"];
+  services: Service[];
+};
+
+export default function Hero({ hero, services }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
@@ -16,24 +22,26 @@ export default function Hero() {
     if (!isAutoPlaying) return;
 
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % heroServices.length);
+      setCurrentIndex((prev) => (prev + 1) % services.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, services.length]);
 
   const nextService = () => {
-    setCurrentIndex((prev) => (prev + 1) % heroServices.length);
+    setCurrentIndex((prev) => (prev + 1) % services.length);
     setIsAutoPlaying(false);
   };
 
   const prevService = () => {
-    setCurrentIndex((prev) => (prev - 1 + heroServices.length) % heroServices.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + services.length) % services.length,
+    );
     setIsAutoPlaying(false);
   };
 
-  const currentService = heroServices[currentIndex];
-  const nextServiceData = heroServices[(currentIndex + 1) % heroServices.length];
+  const currentService = services[currentIndex];
+  const nextServiceData = services[(currentIndex + 1) % services.length];
 
   return (
     <section id="home" className="relative pt-24 z-0">
@@ -42,7 +50,7 @@ export default function Hero() {
           <div className="relative h-[700px] md:h-[800px] z-0 md:rounded-[2.5rem] overflow-hidden">
             <Image
               src={HERO_BG}
-              alt="Европа — консультации по легализации и трудоустройству"
+              alt={hero.imageAlt}
               fill
               className="object-cover"
               priority
@@ -55,17 +63,29 @@ export default function Hero() {
             <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
               <div className="grid md:grid-cols-2 gap-16 items-center">
                 <div className="text-left space-y-6 pt-[44rem] md:pt-10">
-                  <h1 className="text-left text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.15] tracking-tight" style={{ fontFamily: 'Corbel, sans-serif' }}>
-                    Консультации по трудоустройству и легализации в Европе
+                  <h1
+                    className="text-left text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.15] tracking-tight"
+                    style={{ fontFamily: "Corbel, sans-serif" }}
+                  >
+                    {hero.title}
                   </h1>
-                  <p className="text-white text-xl font-normal tracking-wide" style={{ fontFamily: 'Corbel, sans-serif' }}>
-                    Информационная поддержка
+                  <p
+                    className="text-white text-xl font-normal tracking-wide"
+                    style={{ fontFamily: "Corbel, sans-serif" }}
+                  >
+                    {hero.line1}
                   </p>
-                  <p className="text-white text-lg font-light" style={{ fontFamily: 'Corbel, sans-serif' }}>
-                    Законно. По сути.
+                  <p
+                    className="text-white text-lg font-light"
+                    style={{ fontFamily: "Corbel, sans-serif" }}
+                  >
+                    {hero.line2}
                   </p>
-                  <p className="text-white/90 text-base max-w-xl leading-relaxed" style={{ fontFamily: 'Corbel, sans-serif' }}>
-                    Предоставляем индивидуальные консультации по вопросам легального трудоустройства и пребывания в странах Европы. Объясняем реальные возможности, документы и шаги — без иллюзий и лишних затрат.
+                  <p
+                    className="text-white/90 text-base max-w-xl leading-relaxed"
+                    style={{ fontFamily: "Corbel, sans-serif" }}
+                  >
+                    {hero.body}
                   </p>
                 </div>
 
@@ -85,10 +105,16 @@ export default function Hero() {
                           <div className="absolute inset-0 bg-black/40" />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                           <div className="absolute bottom-8 left-6 right-6 text-left">
-                            <p className="text-white/80 text-xs mb-2 uppercase tracking-wider" style={{ fontFamily: 'Corbel, sans-serif' }}>
+                            <p
+                              className="text-white/80 text-xs mb-2 uppercase tracking-wider"
+                              style={{ fontFamily: "Corbel, sans-serif" }}
+                            >
                               {currentService.subtitle}
                             </p>
-                            <h3 className="text-lg md:text-xl font-bold text-white leading-snug break-words md:line-clamp-5" style={{ fontFamily: 'Corbel, sans-serif' }}>
+                            <h3
+                              className="text-lg md:text-xl font-bold text-white leading-snug break-words md:line-clamp-5"
+                              style={{ fontFamily: "Corbel, sans-serif" }}
+                            >
                               {currentService.title}
                             </h3>
                           </div>
@@ -107,7 +133,10 @@ export default function Hero() {
                           <div className="absolute inset-0 bg-black/40" />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                           <div className="absolute bottom-8 left-6 right-6 text-left">
-                            <h3 className="text-lg md:text-xl font-bold text-white leading-snug break-words md:line-clamp-5" style={{ fontFamily: 'Corbel, sans-serif' }}>
+                            <h3
+                              className="text-lg md:text-xl font-bold text-white leading-snug break-words md:line-clamp-5"
+                              style={{ fontFamily: "Corbel, sans-serif" }}
+                            >
                               {nextServiceData.title}
                             </h3>
                           </div>
@@ -120,7 +149,7 @@ export default function Hero() {
                         <button
                           onClick={prevService}
                           className="w-12 h-12 rounded-full bg-white text-[#222221] flex items-center justify-center transition-all shadow-lg hover:shadow-xl hover:bg-[#F9DC0A] hover:text-[#222221]"
-                          aria-label="Предыдущее направление"
+                          aria-label={hero.prevSlide}
                           type="button"
                         >
                           <span className="text-xl">←</span>
@@ -128,18 +157,24 @@ export default function Hero() {
                         <button
                           onClick={nextService}
                           className="w-12 h-12 rounded-full bg-white text-[#222221] flex items-center justify-center transition-all shadow-lg hover:shadow-xl hover:bg-[#F9DC0A] hover:text-[#222221]"
-                          aria-label="Следующее направление"
+                          aria-label={hero.nextSlide}
                           type="button"
                         >
                           <span className="text-xl">→</span>
                         </button>
                       </div>
                       <div className="flex items-center md:ml-3">
-                        <span className="text-gray-400 md:text-white text-2xl font-bold" style={{ fontFamily: 'Corbel, sans-serif' }}>
-                          {String(currentIndex + 1).padStart(2, '0')}
+                        <span
+                          className="text-gray-400 md:text-white text-2xl font-bold"
+                          style={{ fontFamily: "Corbel, sans-serif" }}
+                        >
+                          {String(currentIndex + 1).padStart(2, "0")}
                         </span>
-                        <span className="text-gray-400 md:text-white/60 text-lg ml-1" style={{ fontFamily: 'Corbel, sans-serif' }}>
-                          / {String(heroServices.length).padStart(2, '0')}
+                        <span
+                          className="text-gray-400 md:text-white/60 text-lg ml-1"
+                          style={{ fontFamily: "Corbel, sans-serif" }}
+                        >
+                          / {String(services.length).padStart(2, "0")}
                         </span>
                       </div>
                     </div>

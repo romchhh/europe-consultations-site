@@ -9,11 +9,3 @@ export const siteLinks = {
   telegram: process.env.NEXT_PUBLIC_TELEGRAM_URL ?? "https://t.me/",
   viber: process.env.NEXT_PUBLIC_VIBER_URL ?? "#",
 };
-
-export const siteBrand = {
-  shortName: "Консультации — Европа",
-  legalNote1:
-    "— Информация, предоставленная во время консультаций, носит ознакомительный и рекомендательный характер.",
-  legalNote2:
-    "— Обращаясь к нам, вы даёте согласие на обработку персональных данных исключительно с целью предоставления консультации в соответствии с действующим законодательством и GDPR.",
-};

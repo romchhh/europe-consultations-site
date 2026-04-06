@@ -1,21 +1,17 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
+import type { Messages } from "../../lib/messages/types";
 
-const MACRO_ICON = '🔹';
+const MACRO_ICON = "🔹";
 
-type FaqItem = {
-  question: string;
-  answer: string | string[];
-};
+type FaqItem = Messages["faqs"]["items"][number];
 
 function FaqAnswer({ answer }: { answer: string | string[] }) {
   const parts = Array.isArray(answer) ? answer : [answer];
 
   if (parts.length === 1) {
-    return (
-      <span>{parts[0]}</span>
-    );
+    return <span>{parts[0]}</span>;
   }
 
   return (
@@ -32,57 +28,30 @@ function FaqAnswer({ answer }: { answer: string | string[] }) {
   );
 }
 
-export default function FAQs() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+type Props = {
+  faqs: Messages["faqs"];
+};
 
-  const faqItems: FaqItem[] = [
-    {
-      question: 'Что именно вы предоставляете?',
-      answer:
-        'Мы оказываем информационно-консультационные услуги: разбираем вашу ситуацию, объясняем типовые требования, документы и возможные шаги. Это не замена официальному миграционному или юридическому представительству в конкретной стране.',
-    },
-    {
-      question: 'Как проходит консультация?',
-      answer: [
-        'Консультация может быть онлайн (звонок/видео) или лично (офис).',
-        'Перед встречей полезно кратко описать цель и страну интереса через контактную форму.',
-      ],
-    },
-    {
-      question: 'Гарантируете ли вы визу, ВНЖ или гражданство?',
-      answer:
-        'Нет. Решения принимают государственные органы. Мы даём ознакомительную и рекомендательную информацию, чтобы вы понимали реалистичные варианты, риски и сроки — без иллюзий.',
-    },
-    {
-      question: 'Как оплатить консультацию?',
-      answer: [
-        'Оплата возможна через PayU, Stripe, СБП или другие способы — по ссылке «Оплатить консультацию».',
-        'На сайте или в Telegram-канале (кнопка «Premium»).',
-        'Оплата подтверждает заказ информационно-консультационной услуги.',
-      ],
-    },
-    {
-      question: 'Где узнать больше информации?',
-      answer:
-        'Дополнительные материалы и актуальная информация публикуются в нашем Telegram-канале (подписка платная, 5 евро/месяц). Ссылки на соцсети — внизу страницы.',
-    },
-    {
-      question: 'Работаете ли вы только с одной страной ЕС?',
-      answer:
-        'Фокус — легальное трудоустройство и пребывание в странах Европы в целом.',
-    },
-  ];
+export default function FAQs({ faqs }: Props) {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const faqItems: FaqItem[] = faqs.items;
 
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section id="faqs" className="relative py-24 bg-gradient-to-br from-white via-[#F6F6F6] to-white">
+    <section
+      id="faqs"
+      className="relative py-24 bg-gradient-to-br from-white via-[#F6F6F6] to-white"
+    >
       <div className="max-w-[1200px] mx-auto px-0 md:px-8">
         <div className="text-center mb-12 md:mb-16 px-8 md:px-0">
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-[#222221] leading-tight mb-4" style={{ fontFamily: 'Corbel, sans-serif' }}>
-            Вопросы и ответы
+          <h2
+            className="text-3xl sm:text-4xl md:text-6xl font-bold text-[#222221] leading-tight mb-4"
+            style={{ fontFamily: "Corbel, sans-serif" }}
+          >
+            {faqs.title}
           </h2>
         </div>
 
@@ -91,7 +60,7 @@ export default function FAQs() {
             {faqItems.map((item, index) => (
               <div
                 key={item.question}
-                className={`border-b border-[#E0E0D8] last:border-b-0 ${index === 0 ? 'pt-0' : 'pt-0'}`}
+                className={`border-b border-[#E0E0D8] last:border-b-0 ${index === 0 ? "pt-0" : "pt-0"}`}
               >
                 <button
                   type="button"
@@ -102,28 +71,36 @@ export default function FAQs() {
                   <span
                     className={`relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 transition-all duration-300 ease-out ${
                       openIndex === index
-                        ? 'border-[#F9DC0A] bg-[#F9DC0A]/20 shadow-[0_0_0_1px_rgba(249,220,10,0.35)]'
-                        : 'border-[#222221]/15 bg-white group-hover:border-[#222221]/30 group-hover:bg-[#F6F6F6]'
+                        ? "border-[#F9DC0A] bg-[#F9DC0A]/20 shadow-[0_0_0_1px_rgba(249,220,10,0.35)]"
+                        : "border-[#222221]/15 bg-white group-hover:border-[#222221]/30 group-hover:bg-[#F6F6F6]"
                     }`}
                     aria-hidden
                   >
                     <span className="absolute h-0.5 w-4 rounded-full bg-[#222221]" />
                     <span
                       className={`absolute h-0.5 w-4 rounded-full bg-[#222221] transition-all duration-300 ease-out rotate-90 ${
-                        openIndex === index ? 'opacity-0 scale-0' : 'opacity-100 scale-100'
+                        openIndex === index
+                          ? "opacity-0 scale-0"
+                          : "opacity-100 scale-100"
                       }`}
                     />
                   </span>
-                  <span className="text-[#222221] font-bold text-base md:text-lg flex-1 leading-snug min-w-0" style={{ fontFamily: 'Corbel, sans-serif' }}>
+                  <span
+                    className="text-[#222221] font-bold text-base md:text-lg flex-1 leading-snug min-w-0"
+                    style={{ fontFamily: "Corbel, sans-serif" }}
+                  >
                     {item.question}
                   </span>
                 </button>
                 <div
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    openIndex === index ? 'max-h-[720px] pb-5' : 'max-h-0'
+                    openIndex === index ? "max-h-[720px] pb-5" : "max-h-0"
                   }`}
                 >
-                  <div className="pl-14 pr-2 pb-1 text-[#222221] text-base font-medium leading-relaxed text-justify md:text-left" style={{ fontFamily: 'Corbel, sans-serif' }}>
+                  <div
+                    className="pl-14 pr-2 pb-1 text-[#222221] text-base font-medium leading-relaxed text-justify md:text-left"
+                    style={{ fontFamily: "Corbel, sans-serif" }}
+                  >
                     <FaqAnswer answer={item.answer} />
                   </div>
                 </div>

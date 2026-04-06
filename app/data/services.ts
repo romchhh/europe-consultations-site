@@ -1,80 +1,60 @@
-import { FileText, Globe, RefreshCw, AlertTriangle, Building2 } from 'lucide-react';
+export type ServiceIconKey =
+  | "globe"
+  | "fileText"
+  | "refreshCw"
+  | "alertTriangle"
+  | "building2";
 
 export interface Service {
   title: string;
   subtitle: string;
   description: string;
   image: string;
-  imagePosition?: 'left' | 'right';
-  Icon?: typeof FileText;
+  imagePosition?: "left" | "right";
+  iconKey?: ServiceIconKey;
   icon?: string;
 }
 
 const unsplash = (id: string, w = 800) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
-export const services: Service[] = [
+/** Порядок має збігатися з `messages.*.services.items` */
+export const serviceLayouts = [
   {
-    title: 'Получение гражданства',
-    subtitle: 'Консультации',
-    description:
-      'Разбор оснований, сроков и документов — без обещаний «гарантированного» результата, с реалистичной оценкой возможностей.',
-    image: unsplash('photo-1434030216411-0b793f4b4173'),
-    imagePosition: 'left',
-    Icon: Globe,
-    icon: '🛂',
+    image: unsplash("photo-1434030216411-0b793f4b4173"),
+    imagePosition: "left" as const,
+    iconKey: "globe" as const,
+    icon: "🛂",
   },
   {
-    title: 'Легальное трудоустройство в Европе',
-    subtitle: 'Консультации',
-    description:
-      'Варианты оформления работы, типовые требования работодателя и миграционных органов, на что обратить внимание до переезда.',
-    image: unsplash('photo-1521737711867-e3b97375f902'),
-    imagePosition: 'left',
-    Icon: FileText,
-    icon: '💼',
+    image: unsplash("photo-1521737711867-e3b97375f902"),
+    imagePosition: "left" as const,
+    iconKey: "fileText" as const,
+    icon: "💼",
   },
   {
-    title: 'ВНЖ, разрешения на работу, номера, регистрации',
-    subtitle: 'Консультации',
-    description:
-      'Поясняем назначение документов и статусов, типовые шаги и отличия между странами — в рамках информационной консультации.',
     image:
-      'https://i.pinimg.com/1200x/12/f7/88/12f7886fbea32e723975f380a3dbbd2d.jpg',
-    imagePosition: 'right',
-    Icon: FileText,
-    icon: '📋',
+      "https://i.pinimg.com/1200x/12/f7/88/12f7886fbea32e723975f380a3dbbd2d.jpg",
+    imagePosition: "right" as const,
+    iconKey: "fileText" as const,
+    icon: "📋",
   },
   {
-    title: 'Смена статуса пребывания',
-    subtitle: 'Консультации',
-    description:
-      'Когда смена статуса реалистична, какие риски и сроки чаще встречаются, какие документы обычно запрашивают.',
-    image: unsplash('photo-1450101499163-c8848c66ca85'),
-    imagePosition: 'right',
-    Icon: RefreshCw,
-    icon: '🔄',
+    image: unsplash("photo-1450101499163-c8848c66ca85"),
+    imagePosition: "right" as const,
+    iconKey: "refreshCw" as const,
+    icon: "🔄",
   },
   {
-    title: 'Риски, сроки и варианты действий',
-    subtitle: 'Консультации',
-    description:
-      'Честно обсуждаем ограничения, вероятные задержки и альтернативные сценарии — без иллюзий и лишних затрат.',
-    image: unsplash('photo-1454165804606-c3d57bc86b40'),
-    imagePosition: 'left',
-    Icon: AlertTriangle,
-    icon: '⚖️',
+    image: unsplash("photo-1454165804606-c3d57bc86b40"),
+    imagePosition: "left" as const,
+    iconKey: "alertTriangle" as const,
+    icon: "⚖️",
   },
   {
-    title: 'Бизнес',
-    subtitle: 'Консультации',
-    description:
-      'Консультации по открытию предприятий (фирм), налогообложению (в т.ч. минимизация налогообложения), открытию р/с в банках Европы.',
-    image: unsplash('photo-1486406146926-c627a92ad1ab'),
-    imagePosition: 'right',
-    Icon: Building2,
-    icon: '🏢',
+    image: unsplash("photo-1486406146926-c627a92ad1ab"),
+    imagePosition: "right" as const,
+    iconKey: "building2" as const,
+    icon: "🏢",
   },
 ];
-
-export const heroServices = services;
