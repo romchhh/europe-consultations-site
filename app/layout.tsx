@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { Geist_Mono } from "next/font/google";
+import { Geist_Mono, Manrope } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
 import { defaultLocale } from "../lib/i18n";
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin", "cyrillic"],
+});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -29,7 +34,11 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={`${geistMono.variable} antialiased`}>{children}</body>
+      <body
+        className={`${manrope.variable} ${geistMono.variable} font-sans antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

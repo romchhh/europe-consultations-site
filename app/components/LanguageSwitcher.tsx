@@ -103,7 +103,6 @@ export default function LanguageSwitcher({
                     ? "bg-[#F9DC0A]/18 text-[#222221]"
                     : "text-[#222221] hover:bg-[#F6F6F6]"
                 }`}
-                style={{ fontFamily: "Corbel, sans-serif" }}
               >
                 <span>{langSwitcher[loc]}</span>
                 {active ? (

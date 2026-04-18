@@ -140,13 +140,13 @@ export default function Contact({ contact }: Props) {
                 <div className="text-center mb-8">
                   <h2
                     className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4"
-                    style={{ fontFamily: "Corbel, sans-serif" }}
+
                   >
                     {contact.title}
                   </h2>
                   <p
                     className="text-white text-base drop-shadow-md"
-                    style={{ fontFamily: "Corbel, sans-serif" }}
+
                   >
                     {contact.subtitle}
                   </p>
@@ -156,7 +156,7 @@ export default function Contact({ contact }: Props) {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex justify-center items-center bg-[#F9DC0A] hover:bg-[#e5ca09] text-[#222221] font-semibold px-6 py-2.5 rounded-lg transition-all text-sm sm:text-base"
-                      style={{ fontFamily: "Corbel, sans-serif" }}
+
                     >
                       {contact.payButton}
                     </a>
@@ -165,7 +165,7 @@ export default function Contact({ contact }: Props) {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex justify-center items-center border border-white/60 text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-white/10 text-sm sm:text-base"
-                      style={{ fontFamily: "Corbel, sans-serif" }}
+
                     >
                       {contact.telegramButton}
                     </a>
@@ -183,7 +183,7 @@ export default function Contact({ contact }: Props) {
                     >
                       <p
                         className="text-sm font-medium"
-                        style={{ fontFamily: "Corbel, sans-serif" }}
+
                       >
                         {submitStatus.message}
                       </p>
@@ -194,7 +194,7 @@ export default function Contact({ contact }: Props) {
                     <div>
                       <label
                         className="block text-white text-xs font-semibold mb-2 uppercase tracking-wider drop-shadow-md"
-                        style={{ fontFamily: "Corbel, sans-serif" }}
+
                       >
                         {contact.labels.fullName}
                       </label>
@@ -207,13 +207,13 @@ export default function Contact({ contact }: Props) {
                         }
                         className="w-full px-4 py-3.5 backdrop-blur-md bg-white/30 border border-white/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/60 text-white placeholder:text-white/70 transition-all"
                         placeholder={contact.placeholders.fullName}
-                        style={{ fontFamily: "Corbel, sans-serif" }}
+
                       />
                     </div>
                     <div>
                       <label
                         className="block text-white text-xs font-semibold mb-2 uppercase tracking-wider drop-shadow-md"
-                        style={{ fontFamily: "Corbel, sans-serif" }}
+
                       >
                         {contact.labels.phone}
                       </label>
@@ -226,7 +226,7 @@ export default function Contact({ contact }: Props) {
                         }
                         className="w-full px-4 py-3.5 backdrop-blur-md bg-white/30 border border-white/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/60 text-white placeholder:text-white/70 transition-all"
                         placeholder={contact.placeholders.phone}
-                        style={{ fontFamily: "Corbel, sans-serif" }}
+
                       />
                     </div>
                   </div>
@@ -235,7 +235,7 @@ export default function Contact({ contact }: Props) {
                     <div>
                       <label
                         className="block text-white text-xs font-semibold mb-2 uppercase tracking-wider drop-shadow-md"
-                        style={{ fontFamily: "Corbel, sans-serif" }}
+
                       >
                         {contact.labels.email}
                       </label>
@@ -247,13 +247,13 @@ export default function Contact({ contact }: Props) {
                         }
                         className="w-full px-4 py-3.5 backdrop-blur-md bg-white/30 border border-white/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/60 text-white placeholder:text-white/70 transition-all"
                         placeholder={contact.placeholders.email}
-                        style={{ fontFamily: "Corbel, sans-serif" }}
+
                       />
                     </div>
                     <div>
                       <label
                         className="block text-white text-xs font-semibold mb-2 uppercase tracking-wider drop-shadow-md"
-                        style={{ fontFamily: "Corbel, sans-serif" }}
+
                       >
                         {contact.labels.topic}
                       </label>
@@ -263,7 +263,7 @@ export default function Contact({ contact }: Props) {
                           setFormData({ ...formData, service: e.target.value })
                         }
                         className="w-full px-4 py-3.5 backdrop-blur-md bg-white/30 border border-white/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/60 text-white transition-all"
-                        style={{ fontFamily: "Corbel, sans-serif" }}
+
                       >
                         {contact.serviceOptions.map((opt) => (
                           <option
@@ -281,7 +281,7 @@ export default function Contact({ contact }: Props) {
                   <div>
                     <label
                       className="block text-white text-xs font-semibold mb-2 uppercase tracking-wider drop-shadow-md"
-                      style={{ fontFamily: "Corbel, sans-serif" }}
+
                     >
                       {contact.labels.comment}
                     </label>
@@ -296,7 +296,7 @@ export default function Contact({ contact }: Props) {
                       className="w-full px-4 py-3.5 backdrop-blur-md bg-white/30 border border-white/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/60 text-white placeholder:text-white/70 transition-all resize-none"
                       placeholder={contact.placeholders.comment}
                       rows={4}
-                      style={{ fontFamily: "Corbel, sans-serif" }}
+
                     />
                   </div>
 
@@ -304,7 +304,7 @@ export default function Contact({ contact }: Props) {
                     <div>
                       <label
                         className="block text-white text-sm font-semibold mb-3 drop-shadow-md"
-                        style={{ fontFamily: "Corbel, sans-serif" }}
+
                       >
                         {contact.labels.preferredContact}
                       </label>
@@ -329,7 +329,7 @@ export default function Contact({ contact }: Props) {
                             />
                             <span
                               className="text-white text-sm drop-shadow-md"
-                              style={{ fontFamily: "Corbel, sans-serif" }}
+
                             >
                               {contact.contactMethods[key]}
                             </span>
@@ -344,7 +344,7 @@ export default function Contact({ contact }: Props) {
                       type="submit"
                       disabled={isSubmitting}
                       className="backdrop-blur-md bg-white/40 hover:bg-white/50 border border-white/50 text-[#222221] font-semibold px-10 py-3.5 rounded-lg transition-all uppercase tracking-wider order-2 md:order-1 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
-                      style={{ fontFamily: "Corbel, sans-serif" }}
+
                     >
                       {isSubmitting ? contact.submitting : contact.submit}
                     </button>
@@ -357,7 +357,7 @@ export default function Contact({ contact }: Props) {
                       />
                       <span
                         className="text-white text-sm drop-shadow-md text-left"
-                        style={{ fontFamily: "Corbel, sans-serif" }}
+
                       >
                         {contact.privacyCheckbox}
                       </span>

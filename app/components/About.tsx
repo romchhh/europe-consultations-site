@@ -17,25 +17,16 @@ export default function About({ about }: Props) {
       className="relative mt-96 md:mt-0 pt-28 pb-24 md:py-32 bg-[#F5F5F0] z-10 md:z-auto"
     >
       <div className="max-w-[1320px] mx-auto px-6 md:px-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20 md:mb-28">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16 md:mb-24">
           <div>
-            <p
-              className="text-xs font-bold tracking-[0.2em] uppercase text-[#6F6F6E] mb-5"
-              style={{ fontFamily: "Corbel, sans-serif" }}
-            >
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#6F6F6E] mb-5">
               {about.sectionLabel}
             </p>
-            <h2
-              className="text-4xl md:text-5xl font-bold text-[#222221] leading-[1.15] mb-8"
-              style={{ fontFamily: "Corbel, sans-serif" }}
-            >
+            <h2 className="text-4xl md:text-5xl font-bold text-[#222221] leading-[1.15] mb-8">
               {about.title}
             </h2>
 
-            <div
-              className="mt-2 md:mt-0"
-              style={{ fontFamily: "Corbel, sans-serif" }}
-            >
+            <div className="mt-2 md:mt-0">
               <p className="text-xs font-bold tracking-[0.18em] uppercase text-[#6F6F6E] mb-4">
                 {about.topicsHeading}
               </p>
@@ -52,7 +43,7 @@ export default function About({ about }: Props) {
             </div>
           </div>
 
-          <div className="relative h-[420px] md:h-[560px] rounded-2xl overflow-hidden">
+          <div className="relative h-[420px] md:h-[560px] rounded-2xl overflow-hidden shadow-lg ring-1 ring-black/5">
             <Image
               src={ABOUT_IMG}
               alt={about.imageAlt}
@@ -65,32 +56,33 @@ export default function About({ about }: Props) {
           </div>
         </div>
 
-        <div
-          className="flex flex-col md:flex-row justify-center items-center gap-0 border-t border-b border-[#D8D8D2] py-8 mb-16"
-          style={{ fontFamily: "Corbel, sans-serif" }}
-        >
-          {about.principles.map((p, i) => (
-            <div key={p} className="flex items-center">
-              <span className="flex items-center gap-2 px-8 md:px-12 py-2 text-base md:text-lg font-bold text-[#222221] tracking-wide">
-                <span className="text-[#F9DC0A]">✓</span>
-                {p}
-              </span>
-              {i < about.principles.length - 1 && (
-                <span className="hidden md:block w-px h-5 bg-[#D8D8D2]" />
-              )}
-            </div>
-          ))}
+        <div className="rounded-2xl border border-[#E0E0D8] bg-white/90 shadow-sm backdrop-blur-sm px-5 py-8 md:px-10 md:py-10 mb-6 md:mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0 md:divide-x md:divide-[#E8E8E2]">
+            {about.principles.map((p) => (
+              <div
+                key={p}
+                className="flex items-center justify-center gap-2.5 text-center md:px-4"
+              >
+                <span
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F9DC0A]/25 text-[#222221] text-sm font-bold"
+                  aria-hidden
+                >
+                  ✓
+                </span>
+                <span className="text-base md:text-lg font-bold text-[#222221] tracking-wide">
+                  {p}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div
-          className="max-w-2xl mx-auto text-center"
-          style={{ fontFamily: "Corbel, sans-serif" }}
-        >
-          <p className="text-base md:text-lg text-[#444443] mb-7">
+        <div className="mx-auto max-w-2xl rounded-3xl border border-[#E0E0D8] bg-white px-6 py-10 shadow-md md:px-12 md:py-12">
+          <p className="text-center text-base md:text-lg leading-relaxed text-[#444443] mb-8">
             {about.ctaText}
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-3 mb-6">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 mb-8">
             <a
               href={siteLinks.payment}
               target="_blank"
@@ -107,7 +99,7 @@ export default function About({ about }: Props) {
             </Link>
           </div>
 
-          <p className="text-sm text-[#6F6F6E]">
+          <p className="text-center text-sm text-[#6F6F6E] leading-relaxed">
             {about.telegramMore}{" "}
             <a
               href={siteLinks.telegramChannel}

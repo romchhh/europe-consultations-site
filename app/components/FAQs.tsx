@@ -8,23 +8,34 @@ const MACRO_ICON = "🔹";
 type FaqItem = Messages["faqs"]["items"][number];
 
 function FaqAnswer({ answer }: { answer: string | string[] }) {
-  const parts = Array.isArray(answer) ? answer : [answer];
+  if (Array.isArray(answer)) {
+    return (
+      <ul className="space-y-3 list-none pl-0">
+        {answer.map((line) => (
+          <li key={line} className="flex gap-2.5">
+            <span className="shrink-0 select-none" aria-hidden>
+              {MACRO_ICON}
+            </span>
+            <span>{line}</span>
+          </li>
+        ))}
+      </ul>
+    );
+  }
 
-  if (parts.length === 1) {
-    return <span>{parts[0]}</span>;
+  const paragraphs = answer.split(/\n\n+/).filter(Boolean);
+  if (paragraphs.length === 1) {
+    return <span>{paragraphs[0]}</span>;
   }
 
   return (
-    <ul className="space-y-3 list-none pl-0">
-      {parts.map((line) => (
-        <li key={line} className="flex gap-2.5">
-          <span className="shrink-0 select-none" aria-hidden>
-            {MACRO_ICON}
-          </span>
-          <span>{line}</span>
-        </li>
+    <div className="space-y-3">
+      {paragraphs.map((p, i) => (
+        <p key={`${i}-${p.slice(0, 24)}`} className="m-0">
+          {p}
+        </p>
       ))}
-    </ul>
+    </div>
   );
 }
 
@@ -47,10 +58,7 @@ export default function FAQs({ faqs }: Props) {
     >
       <div className="max-w-[1200px] mx-auto px-0 md:px-8">
         <div className="text-center mb-12 md:mb-16 px-8 md:px-0">
-          <h2
-            className="text-3xl sm:text-4xl md:text-6xl font-bold text-[#222221] leading-tight mb-4"
-            style={{ fontFamily: "Corbel, sans-serif" }}
-          >
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-[#222221] leading-tight mb-4">
             {faqs.title}
           </h2>
         </div>
@@ -85,10 +93,7 @@ export default function FAQs({ faqs }: Props) {
                       }`}
                     />
                   </span>
-                  <span
-                    className="text-[#222221] font-bold text-base md:text-lg flex-1 leading-snug min-w-0"
-                    style={{ fontFamily: "Corbel, sans-serif" }}
-                  >
+                  <span className="text-[#222221] font-bold text-base md:text-lg flex-1 leading-snug min-w-0">
                     {item.question}
                   </span>
                 </button>
@@ -97,10 +102,7 @@ export default function FAQs({ faqs }: Props) {
                     openIndex === index ? "max-h-[720px] pb-5" : "max-h-0"
                   }`}
                 >
-                  <div
-                    className="pl-14 pr-2 pb-1 text-[#222221] text-base font-medium leading-relaxed text-justify md:text-left"
-                    style={{ fontFamily: "Corbel, sans-serif" }}
-                  >
+                  <div className="pl-14 pr-2 pb-1 text-[#222221] text-base font-medium leading-relaxed text-justify md:text-left">
                     <FaqAnswer answer={item.answer} />
                   </div>
                 </div>

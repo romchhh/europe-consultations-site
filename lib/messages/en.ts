@@ -65,6 +65,7 @@ export const en: Messages = {
       "Changing immigration status",
       "Risks, timelines and options",
       "Opening bank accounts in Europe for individuals and legal entities",
+      "Grant applications",
     ],
     principles: ["Legality", "Clarity", "Honesty"],
     imageAlt: "European city — legalisation consultations",
@@ -79,14 +80,13 @@ export const en: Messages = {
     items: [
       {
         question: "What exactly do you provide?",
-        answer:
-          "We provide information and advisory services: we review your situation, explain typical requirements, documents and possible steps. This is not a substitute for official migration or legal representation in a specific country.",
+        answer: "The full list of services is available on Telegram.",
       },
       {
         question: "How does a consultation work?",
         answer: [
           "Consultations can be online (call/video) or in person (office).",
-          "Before the meeting, it helps to briefly describe your goal and country of interest via the contact form.",
+          "Before the consultation, it helps to briefly describe your goal and country of interest via the contact form.",
         ],
       },
       {
@@ -97,7 +97,7 @@ export const en: Messages = {
       {
         question: "How can I pay for a consultation?",
         answer: [
-          "Payment is possible via PayU, Stripe, SBP or other methods — using the “Pay for a consultation” link.",
+          "Payment is possible via Stripe using the “Pay for a consultation” link, as well as other methods listed below.",
           "On the website or in the Telegram channel (the “Premium” button).",
           "Payment confirms your request for information and advisory services.",
         ],
@@ -151,7 +151,7 @@ export const en: Messages = {
         title: "Business",
         subtitle: "Consultations",
         description:
-          "Consultations on opening companies, taxation (including optimisation), and opening bank accounts in Europe.",
+          "Consultations on opening companies (firms),\n\ntaxation (including tax optimisation),\n\nand opening bank accounts in Europe.\n\nGrant applications.",
       },
     ],
   },
@@ -184,6 +184,7 @@ export const en: Messages = {
         label:
           "Business: companies, taxation (incl. optimisation), EU bank accounts",
       },
+      { value: "grants", label: "Grant applications" },
       { value: "other", label: "Other" },
     ],
     labels: {

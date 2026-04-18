@@ -6,9 +6,6 @@ import { useState, useEffect } from "react";
 import type { Service } from "../data/services";
 import type { Messages } from "../../lib/messages/types";
 
-const HERO_BG =
-  "https://i.pinimg.com/1200x/b8/8b/8b/b88b8bcff6dec43c322a348dc32a219d.jpg";
-
 type Props = {
   hero: Messages["hero"];
   services: Service[];
@@ -46,45 +43,34 @@ export default function Hero({ hero, services }: Props) {
   return (
     <section id="home" className="relative pt-24 z-0">
       <div className="max-w-[1400px] mx-auto px-0 md:px-8 pt-4 pb-96 md:pb-12">
-        <div className="relative bg-white md:rounded-[2.5rem] md:shadow-2xl">
-          <div className="relative h-[700px] md:h-[800px] z-0 md:rounded-[2.5rem] overflow-hidden">
-            <Image
-              src={HERO_BG}
-              alt={hero.imageAlt}
-              fill
-              className="object-cover"
-              priority
-              sizes="100vw"
+        <div className="relative bg-white md:rounded-[2.5rem] md:shadow-2xl overflow-hidden">
+          <div className="relative min-h-[520px] md:min-h-[800px] md:rounded-[2.5rem]">
+            <div
+              className="absolute inset-0 bg-gradient-to-br from-[#2f2f2c] via-[#3d3d38] to-[#1a1a18] md:rounded-[2.5rem]"
+              aria-hidden
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/15 to-black/40" />
+            <div
+              className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_30%_20%,rgba(249,220,10,0.08),transparent_55%)] md:rounded-[2.5rem] pointer-events-none"
+              aria-hidden
+            />
+            <div
+              className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent md:rounded-[2.5rem] pointer-events-none"
+              aria-hidden
+            />
           </div>
 
           <div className="absolute inset-0 flex items-center z-10 md:rounded-[2.5rem]">
-            <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
-              <div className="grid md:grid-cols-2 gap-16 items-center">
-                <div className="text-left space-y-6 pt-[44rem] md:pt-10">
-                  <h1
-                    className="text-left text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.15] tracking-tight"
-                    style={{ fontFamily: "Corbel, sans-serif" }}
-                  >
+            <div className="w-full max-w-7xl mx-auto px-6 md:px-12 py-10 md:py-12">
+              <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+                <div className="text-left space-y-5 md:space-y-6 pt-4 md:pt-2">
+                  <h1 className="text-left text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.15] tracking-tight">
                     {hero.title}
                   </h1>
-                  <p
-                    className="text-white text-xl font-normal tracking-wide"
-                    style={{ fontFamily: "Corbel, sans-serif" }}
-                  >
+                  <p className="text-white text-xl font-normal tracking-wide">
                     {hero.line1}
                   </p>
-                  <p
-                    className="text-white text-lg font-light"
-                    style={{ fontFamily: "Corbel, sans-serif" }}
-                  >
-                    {hero.line2}
-                  </p>
-                  <p
-                    className="text-white/90 text-base max-w-xl leading-relaxed"
-                    style={{ fontFamily: "Corbel, sans-serif" }}
-                  >
+                  <p className="text-white text-lg font-light">{hero.line2}</p>
+                  <p className="text-white/90 text-base max-w-xl leading-relaxed">
                     {hero.body}
                   </p>
                 </div>
@@ -105,16 +91,10 @@ export default function Hero({ hero, services }: Props) {
                           <div className="absolute inset-0 bg-black/40" />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                           <div className="absolute bottom-8 left-6 right-6 text-left">
-                            <p
-                              className="text-white/80 text-xs mb-2 uppercase tracking-wider"
-                              style={{ fontFamily: "Corbel, sans-serif" }}
-                            >
+                            <p className="text-white/80 text-xs mb-2 uppercase tracking-wider">
                               {currentService.subtitle}
                             </p>
-                            <h3
-                              className="text-lg md:text-xl font-bold text-white leading-snug break-words md:line-clamp-5"
-                              style={{ fontFamily: "Corbel, sans-serif" }}
-                            >
+                            <h3 className="text-lg md:text-xl font-bold text-white leading-snug break-words md:line-clamp-5">
                               {currentService.title}
                             </h3>
                           </div>
@@ -133,10 +113,7 @@ export default function Hero({ hero, services }: Props) {
                           <div className="absolute inset-0 bg-black/40" />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                           <div className="absolute bottom-8 left-6 right-6 text-left">
-                            <h3
-                              className="text-lg md:text-xl font-bold text-white leading-snug break-words md:line-clamp-5"
-                              style={{ fontFamily: "Corbel, sans-serif" }}
-                            >
+                            <h3 className="text-lg md:text-xl font-bold text-white leading-snug break-words md:line-clamp-5">
                               {nextServiceData.title}
                             </h3>
                           </div>
@@ -164,16 +141,10 @@ export default function Hero({ hero, services }: Props) {
                         </button>
                       </div>
                       <div className="flex items-center md:ml-3">
-                        <span
-                          className="text-gray-400 md:text-white text-2xl font-bold"
-                          style={{ fontFamily: "Corbel, sans-serif" }}
-                        >
+                        <span className="text-white text-2xl font-bold">
                           {String(currentIndex + 1).padStart(2, "0")}
                         </span>
-                        <span
-                          className="text-gray-400 md:text-white/60 text-lg ml-1"
-                          style={{ fontFamily: "Corbel, sans-serif" }}
-                        >
+                        <span className="text-white/60 text-lg ml-1">
                           / {String(services.length).padStart(2, "0")}
                         </span>
                       </div>

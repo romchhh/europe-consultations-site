@@ -32,10 +32,7 @@ export default function Services({ sectionTitle, services }: Props) {
     >
       <div className="max-w-[1400px] mx-auto px-8">
         <div className="text-center mb-12">
-          <h2
-            className="text-4xl md:text-5xl font-bold text-[#222221] leading-tight"
-            style={{ fontFamily: "Corbel, sans-serif" }}
-          >
+          <h2 className="text-4xl md:text-5xl font-bold text-[#222221] leading-tight">
             {sectionTitle}
           </h2>
         </div>
@@ -83,17 +80,11 @@ export default function Services({ sectionTitle, services }: Props) {
                     </div>
                   )}
 
-                  <h3
-                    className="text-white text-base sm:text-lg font-bold mb-2 leading-tight text-center"
-                    style={{ fontFamily: "Corbel, sans-serif" }}
-                  >
+                  <h3 className="text-white text-base sm:text-lg font-bold mb-2 leading-tight text-center">
                     {service.title}
                   </h3>
 
-                  <p
-                    className="text-white/90 text-xs sm:text-sm font-medium leading-relaxed text-center"
-                    style={{ fontFamily: "Corbel, sans-serif" }}
-                  >
+                  <p className="text-white/90 text-xs sm:text-sm font-medium leading-relaxed text-center whitespace-pre-line">
                     {service.description}
                   </p>
                 </div>

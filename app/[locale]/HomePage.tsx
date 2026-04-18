@@ -38,13 +38,13 @@ export default function HomePage({ locale, messages, services }: Props) {
           >
             <span
               className="text-base sm:text-xl md:text-2xl font-bold text-[#222221] leading-tight break-words max-w-[220px] sm:max-w-none"
-              style={{ fontFamily: "Corbel, sans-serif" }}
+
             >
               {brand.shortName}
             </span>
             <span
               className="text-[10px] sm:text-xs text-[#222221]/80 hidden sm:block"
-              style={{ fontFamily: "Corbel, sans-serif" }}
+
             >
               {brand.tagline}
             </span>
@@ -54,35 +54,35 @@ export default function HomePage({ locale, messages, services }: Props) {
             <Link
               href="#home"
               className="text-[#222221] hover:text-[#6F6F6E] font-bold transition-colors"
-              style={{ fontFamily: "Corbel, sans-serif" }}
+
             >
               {nav.home}
             </Link>
             <Link
               href="#services"
               className="text-[#222221] hover:text-[#6F6F6E] font-bold transition-colors"
-              style={{ fontFamily: "Corbel, sans-serif" }}
+
             >
               {nav.services}
             </Link>
             <Link
               href="#about"
               className="text-[#222221] hover:text-[#6F6F6E] font-bold transition-colors"
-              style={{ fontFamily: "Corbel, sans-serif" }}
+
             >
               {nav.about}
             </Link>
             <Link
               href="#faqs"
               className="text-[#222221] hover:text-[#6F6F6E] font-bold transition-colors"
-              style={{ fontFamily: "Corbel, sans-serif" }}
+
             >
               {nav.faqs}
             </Link>
             <Link
               href="#contact"
               className="text-[#222221] hover:text-[#6F6F6E] font-bold transition-colors"
-              style={{ fontFamily: "Corbel, sans-serif" }}
+
             >
               {nav.contact}
             </Link>
@@ -105,7 +105,7 @@ export default function HomePage({ locale, messages, services }: Props) {
                   ?.scrollIntoView({ behavior: "smooth", block: "start" });
               }}
               className="inline-block bg-[#222221] hover:bg-[#6F6F6E] text-white font-semibold px-6 py-2.5 rounded-lg transition-all shadow-lg hover:shadow-xl"
-              style={{ fontFamily: "Corbel, sans-serif" }}
+
             >
               {nav.cta}
             </Link>
@@ -163,7 +163,7 @@ export default function HomePage({ locale, messages, services }: Props) {
                 <Link
                   href="#home"
                   className="text-[#222221] hover:text-[#6F6F6E] font-bold py-4 text-2xl transition-colors border-b border-[#E0E0D8]"
-                  style={{ fontFamily: "Corbel, sans-serif" }}
+
                   onClick={closeMenu}
                 >
                   {nav.home}
@@ -171,7 +171,7 @@ export default function HomePage({ locale, messages, services }: Props) {
                 <Link
                   href="#services"
                   className="text-[#222221] hover:text-[#6F6F6E] font-bold py-4 text-2xl transition-colors border-b border-[#E0E0D8]"
-                  style={{ fontFamily: "Corbel, sans-serif" }}
+
                   onClick={closeMenu}
                 >
                   {nav.services}
@@ -179,7 +179,7 @@ export default function HomePage({ locale, messages, services }: Props) {
                 <Link
                   href="#about"
                   className="text-[#222221] hover:text-[#6F6F6E] font-bold py-4 text-2xl transition-colors border-b border-[#E0E0D8]"
-                  style={{ fontFamily: "Corbel, sans-serif" }}
+
                   onClick={closeMenu}
                 >
                   {nav.about}
@@ -187,7 +187,7 @@ export default function HomePage({ locale, messages, services }: Props) {
                 <Link
                   href="#faqs"
                   className="text-[#222221] hover:text-[#6F6F6E] font-bold py-4 text-2xl transition-colors border-b border-[#E0E0D8]"
-                  style={{ fontFamily: "Corbel, sans-serif" }}
+
                   onClick={closeMenu}
                 >
                   {nav.faqs}
@@ -202,7 +202,7 @@ export default function HomePage({ locale, messages, services }: Props) {
                       ?.scrollIntoView({ behavior: "smooth", block: "start" });
                   }}
                   className="text-[#222221] hover:text-[#6F6F6E] font-bold py-4 text-2xl transition-colors border-b border-[#E0E0D8]"
-                  style={{ fontFamily: "Corbel, sans-serif" }}
+
                 >
                   {nav.contact}
                 </Link>
@@ -216,7 +216,7 @@ export default function HomePage({ locale, messages, services }: Props) {
                       ?.scrollIntoView({ behavior: "smooth", block: "start" });
                   }}
                   className="mt-8 bg-[#222221] hover:bg-[#6F6F6E] text-white font-semibold px-8 py-4 rounded-lg transition-all shadow-lg text-center text-xl"
-                  style={{ fontFamily: "Corbel, sans-serif" }}
+
                 >
                   {nav.cta}
                 </Link>

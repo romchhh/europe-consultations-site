@@ -20,13 +20,13 @@ export default function Footer({ messages }: Props) {
             <Link href="#home" className="inline-block mb-4">
               <span
                 className="text-2xl md:text-3xl font-bold text-white tracking-tight block"
-                style={{ fontFamily: "Corbel, sans-serif" }}
+
               >
                 {brand.shortName}
               </span>
               <span
                 className="text-sm text-[#6F6F6E] mt-1 block"
-                style={{ fontFamily: "Corbel, sans-serif" }}
+
               >
                 {footer.tagline}
               </span>
@@ -36,13 +36,13 @@ export default function Footer({ messages }: Props) {
           <div>
             <p
               className="text-xs uppercase tracking-wider mb-4 text-[#6F6F6E] font-bold"
-              style={{ fontFamily: "Corbel, sans-serif" }}
+
             >
               {footer.socialTitle}
             </p>
             <p
               className="text-sm text-white/90 leading-relaxed mb-6"
-              style={{ fontFamily: "Corbel, sans-serif" }}
+
             >
               {footer.socialText}
             </p>
@@ -127,7 +127,7 @@ export default function Footer({ messages }: Props) {
           <div>
             <p
               className="text-xs uppercase tracking-wider mb-4 text-[#6F6F6E] font-bold"
-              style={{ fontFamily: "Corbel, sans-serif" }}
+
             >
               {footer.paymentTitle}
             </p>
@@ -136,20 +136,20 @@ export default function Footer({ messages }: Props) {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block text-sm font-semibold text-[#F9DC0A] hover:text-white transition-colors mb-4"
-              style={{ fontFamily: "Corbel, sans-serif" }}
+
             >
               {footer.payLink}
             </a>
             <p
               className="text-xs text-white/70 leading-relaxed"
-              style={{ fontFamily: "Corbel, sans-serif" }}
+
             >
               {footer.payNote}
             </p>
             <div className="w-full h-px bg-[#6F6F6E]/50 my-4" />
             <p
               className="text-sm text-white/90"
-              style={{ fontFamily: "Corbel, sans-serif" }}
+
             >
               {footer.telegramMore}{" "}
               <a
@@ -168,19 +168,19 @@ export default function Footer({ messages }: Props) {
         <div className="border-t border-[#6F6F6E]/50 pt-8 space-y-4">
           <p
             className="text-[11px] md:text-xs text-[#9a9a95] leading-relaxed max-w-4xl mx-auto text-center"
-            style={{ fontFamily: "Corbel, sans-serif" }}
+
           >
             *{brand.legalNote1}
           </p>
           <p
             className="text-[11px] md:text-xs text-[#9a9a95] leading-relaxed max-w-4xl mx-auto text-center"
-            style={{ fontFamily: "Corbel, sans-serif" }}
+
           >
             **{brand.legalNote2}
           </p>
           <p
             className="text-xs text-[#6F6F6E] text-center"
-            style={{ fontFamily: "Corbel, sans-serif" }}
+
           >
             © {new Date().getFullYear()} {brand.shortName}. {footer.copyright}{" "}
             <Link
