@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import type { Service } from "../data/services";
+import { siteLinks } from "../data/site";
 import type { Messages } from "../../lib/messages/types";
 
 type Props = {
@@ -73,6 +74,16 @@ export default function Hero({ hero, services }: Props) {
                   <p className="text-white/90 text-base max-w-xl leading-relaxed">
                     {hero.body}
                   </p>
+                  <div className="pt-2">
+                    <a
+                      href={siteLinks.payment}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center rounded-xl bg-[#F9DC0A] px-8 py-3.5 text-base font-semibold text-[#222221] shadow-lg transition-all hover:bg-[#e5ca09] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80"
+                    >
+                      {hero.bookCta}
+                    </a>
+                  </div>
                 </div>
 
                 <div className="relative flex items-center justify-center md:justify-end">

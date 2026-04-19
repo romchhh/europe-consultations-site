@@ -51,6 +51,7 @@ export const en: Messages = {
     line1: "Information support",
     line2: "Legally. To the point.",
     body: "We provide individual consultations on legal employment and stay in European countries. We explain realistic options, documents and steps — without illusions or unnecessary costs.",
+    bookCta: "Book a consultation",
     prevSlide: "Previous area",
     nextSlide: "Next area",
   },

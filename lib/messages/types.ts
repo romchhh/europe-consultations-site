@@ -54,6 +54,7 @@ export type Messages = {
     line1: string;
     line2: string;
     body: string;
+    bookCta: string;
     prevSlide: string;
     nextSlide: string;
   };
