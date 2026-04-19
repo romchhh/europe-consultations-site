@@ -72,7 +72,7 @@ export const en: Messages = {
     imageAlt: "European city — legalisation consultations",
     ctaText:
       "Consultations — online or in person. Payment confirms your request for information and advisory services.",
-    payButton: "Pay for a consultation",
+    payButton: "Pay for a consultation (Stripe)",
     contactButton: "Contact us",
     telegramMore: "More information on",
   },
@@ -160,13 +160,17 @@ export const en: Messages = {
     title: "Contact us",
     subtitle:
       "Request for information and advisory services. We will respond using your preferred channel.",
-    payButton: "Pay for a consultation (PayU, Stripe, SBP)",
+    payButton: "Pay for a consultation (Stripe)",
     telegramButton: "Telegram (subscription)",
     privacyError: "You must agree to the data processing terms",
     tgSuccess:
       "Telegram opened with your request text. If the window did not appear, message us via the button above or book a consultation.",
     tgFallback:
       "We do not use on-site email. Please use “Pay for a consultation” or Telegram above.",
+    emailSuccess:
+      "Your request has been sent by email. We will contact you shortly.",
+    emailError:
+      "Could not send your request. Please try again later or use Telegram or the payment link.",
     serviceOptions: [
       { value: "citizenship", label: "Citizenship" },
       { value: "employment-eu", label: "Legal employment in Europe" },
@@ -219,9 +223,9 @@ export const en: Messages = {
     tagline: "Information support. Legally. To the point.",
     socialTitle: "Social media",
     socialText:
-      "Facebook, WhatsApp, Telegram, Viber — choose a convenient channel.",
+      "Facebook (group) and Telegram — choose a convenient channel.",
     paymentTitle: "Payment",
-    payLink: "Pay for a consultation (PayU, Stripe, SBP, etc.)",
+    payLink: "Pay for a consultation (Stripe)",
     payNote:
       "Payment confirms your request for information and advisory services.",
     telegramMore: "More materials on",

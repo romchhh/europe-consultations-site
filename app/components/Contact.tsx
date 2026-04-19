@@ -18,10 +18,6 @@ const PREFERRED_KEYS = [
 
 type PreferredKey = (typeof PREFERRED_KEYS)[number];
 
-function stripRequiredMark(label: string) {
-  return label.replace(/\s*\*$/u, "").trim();
-}
-
 type Props = {
   contact: Messages["contact"];
 };
@@ -46,7 +42,7 @@ export default function Contact({ contact }: Props) {
     contact.serviceOptions.map((o) => [o.value, o.label]),
   ) as Record<string, string>;
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!privacyAgreed) {
@@ -60,49 +56,48 @@ export default function Contact({ contact }: Props) {
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: "" });
 
+    const serviceName =
+      serviceLabelByValue[formData.service] ?? formData.service;
+    const methodLabel =
+      contact.contactMethods[formData.preferredContact] ??
+      formData.preferredContact;
+
     try {
-      const serviceName =
-        serviceLabelByValue[formData.service] ?? formData.service;
-      const methodLabel =
-        contact.contactMethods[formData.preferredContact] ??
-        formData.preferredContact;
-      const lines = [
-        contact.formHeader,
-        `${stripRequiredMark(contact.labels.fullName)}: ${formData.fullName.trim()}`,
-        `${stripRequiredMark(contact.labels.phone)}: ${formData.phone.trim()}`,
-        formData.email.trim()
-          ? `${contact.labels.email}: ${formData.email.trim()}`
-          : "",
-        `${contact.labels.topic}: ${serviceName}`,
-        `${stripRequiredMark(contact.labels.preferredContact)}: ${methodLabel}`,
-        formData.taskDescription.trim()
-          ? `${contact.labels.comment}:\n${formData.taskDescription.trim()}`
-          : "",
-      ]
-        .filter(Boolean)
-        .join("\n");
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: formData.fullName.trim(),
+          phone: formData.phone.trim(),
+          email: formData.email.trim(),
+          service: formData.service,
+          serviceLabel: serviceName,
+          preferredContact: formData.preferredContact,
+          preferredContactLabel: methodLabel,
+          taskDescription: formData.taskDescription.trim(),
+        }),
+      });
 
-      const tgBase = siteLinks.telegram.replace(/\/$/, "");
-      const tgReady =
-        tgBase.startsWith("https://t.me/") &&
-        tgBase.length > "https://t.me/".length;
-
-      if (tgReady) {
-        window.open(
-          `${tgBase}?text=${encodeURIComponent(lines)}`,
-          "_blank",
-          "noopener,noreferrer",
-        );
-        setSubmitStatus({
-          type: "success",
-          message: contact.tgSuccess,
-        });
-      } else {
-        setSubmitStatus({
-          type: "success",
-          message: contact.tgFallback,
-        });
+      let data: { error?: string } = {};
+      try {
+        data = (await res.json()) as { error?: string };
+      } catch {
+        /* ignore */
       }
+
+      if (!res.ok) {
+        setSubmitStatus({
+          type: "error",
+          message:
+            typeof data.error === "string" ? data.error : contact.emailError,
+        });
+        return;
+      }
+
+      setSubmitStatus({
+        type: "success",
+        message: contact.emailSuccess,
+      });
 
       setFormData({
         fullName: "",
@@ -113,6 +108,8 @@ export default function Contact({ contact }: Props) {
         taskDescription: "",
       });
       setPrivacyAgreed(false);
+    } catch {
+      setSubmitStatus({ type: "error", message: contact.emailError });
     } finally {
       setIsSubmitting(false);
     }

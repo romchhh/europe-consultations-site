@@ -86,6 +86,8 @@ export type Messages = {
     privacyError: string;
     tgSuccess: string;
     tgFallback: string;
+    emailSuccess: string;
+    emailError: string;
     serviceOptions: ContactServiceOption[];
     labels: {
       fullName: string;
