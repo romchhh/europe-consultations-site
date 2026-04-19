@@ -25,6 +25,14 @@ export default function HomePage({ locale, messages, services }: Props) {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
+  const goToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    closeMenu();
+    document
+      .getElementById("contact")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   const { nav, brand, langSwitcher } = messages;
 
   return (
@@ -79,13 +87,13 @@ export default function HomePage({ locale, messages, services }: Props) {
             >
               {nav.faqs}
             </Link>
-            <Link
+            <a
               href="#contact"
-              className="text-[#222221] hover:text-[#6F6F6E] font-bold transition-colors"
-
+              onClick={goToContact}
+              className="text-[#222221] hover:text-[#6F6F6E] font-bold transition-colors cursor-pointer"
             >
               {nav.contact}
-            </Link>
+            </a>
           </nav>
 
           <div className="hidden md:flex items-center gap-3 shrink-0">
@@ -95,20 +103,13 @@ export default function HomePage({ locale, messages, services }: Props) {
               ariaLabel={nav.language}
               menuAlign="end"
             />
-            <Link
+            <a
               href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                closeMenu();
-                document
-                  .getElementById("contact")
-                  ?.scrollIntoView({ behavior: "smooth", block: "start" });
-              }}
-              className="inline-block bg-[#222221] hover:bg-[#6F6F6E] text-white font-semibold px-6 py-2.5 rounded-lg transition-all shadow-lg hover:shadow-xl"
-
+              onClick={goToContact}
+              className="inline-block bg-[#222221] hover:bg-[#6F6F6E] text-white font-semibold px-6 py-2.5 rounded-lg transition-all shadow-lg hover:shadow-xl cursor-pointer"
             >
               {nav.cta}
-            </Link>
+            </a>
           </div>
 
           <button
@@ -192,41 +193,31 @@ export default function HomePage({ locale, messages, services }: Props) {
                 >
                   {nav.faqs}
                 </Link>
-                <Link
+                <a
                   href="#contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    closeMenu();
-                    document
-                      .getElementById("contact")
-                      ?.scrollIntoView({ behavior: "smooth", block: "start" });
-                  }}
-                  className="text-[#222221] hover:text-[#6F6F6E] font-bold py-4 text-2xl transition-colors border-b border-[#E0E0D8]"
-
+                  onClick={goToContact}
+                  className="text-[#222221] hover:text-[#6F6F6E] font-bold py-4 text-2xl transition-colors border-b border-[#E0E0D8] cursor-pointer"
                 >
                   {nav.contact}
-                </Link>
-                <Link
+                </a>
+                <a
                   href="#contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    closeMenu();
-                    document
-                      .getElementById("contact")
-                      ?.scrollIntoView({ behavior: "smooth", block: "start" });
-                  }}
-                  className="mt-8 bg-[#222221] hover:bg-[#6F6F6E] text-white font-semibold px-8 py-4 rounded-lg transition-all shadow-lg text-center text-xl"
-
+                  onClick={goToContact}
+                  className="mt-8 bg-[#222221] hover:bg-[#6F6F6E] text-white font-semibold px-8 py-4 rounded-lg transition-all shadow-lg text-center text-xl cursor-pointer"
                 >
                   {nav.cta}
-                </Link>
+                </a>
               </nav>
             </div>
           </div>
         </>
       )}
 
-      <Hero hero={messages.hero} services={services} />
+      <Hero
+        hero={messages.hero}
+        services={services}
+        contactCta={nav.cta}
+      />
       <About about={messages.about} />
       <FAQs faqs={messages.faqs} />
       <Services

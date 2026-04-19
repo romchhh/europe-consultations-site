@@ -10,9 +10,18 @@ import type { Messages } from "../../lib/messages/types";
 type Props = {
   hero: Messages["hero"];
   services: Service[];
+  /** Текст як у кнопці «Звʼязатися» в хедері — скрол до #contact */
+  contactCta: string;
 };
 
-export default function Hero({ hero, services }: Props) {
+function goToContact(e: React.MouseEvent<HTMLAnchorElement>) {
+  e.preventDefault();
+  document
+    .getElementById("contact")
+    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+export default function Hero({ hero, services, contactCta }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
@@ -74,7 +83,7 @@ export default function Hero({ hero, services }: Props) {
                   <p className="text-white/90 text-base max-w-xl leading-relaxed">
                     {hero.body}
                   </p>
-                  <div className="pt-2">
+                  <div className="flex flex-wrap items-center gap-3 pt-2">
                     <a
                       href={siteLinks.payment}
                       target="_blank"
@@ -82,6 +91,13 @@ export default function Hero({ hero, services }: Props) {
                       className="inline-flex items-center justify-center rounded-xl bg-[#F9DC0A] px-8 py-3.5 text-base font-semibold text-[#222221] shadow-lg transition-all hover:bg-[#e5ca09] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80"
                     >
                       {hero.bookCta}
+                    </a>
+                    <a
+                      href="#contact"
+                      onClick={goToContact}
+                      className="inline-flex items-center justify-center rounded-xl bg-[#222221] px-8 py-3.5 text-base font-semibold text-white shadow-lg transition-all hover:bg-[#6F6F6E] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80"
+                    >
+                      {contactCta}
                     </a>
                   </div>
                 </div>

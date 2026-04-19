@@ -22,6 +22,9 @@ type Props = {
   contact: Messages["contact"];
 };
 
+const inputClass =
+  "w-full px-4 py-3.5 rounded-xl border border-[#D8D8D2] bg-[#FAFAF8] text-[#222221] placeholder:text-[#6F6F6E] shadow-inner transition-all focus:outline-none focus:border-[#F9DC0A] focus:bg-white focus:ring-4 focus:ring-[#F9DC0A]/15";
+
 export default function Contact({ contact }: Props) {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -116,253 +119,221 @@ export default function Contact({ contact }: Props) {
   };
 
   return (
-    <section id="contact" className="relative py-20 scroll-mt-24">
-      <div className="max-w-[1400px] mx-auto px-3 md:px-8 pt-4 pb-12">
-        <div className="relative bg-white rounded-[2.5rem] shadow-2xl">
-          <div className="relative h-[1100px] md:h-[700px] z-0 rounded-[2.5rem] overflow-hidden">
-            <Image
-              src={CONTACT_BG}
-              alt=""
-              fill
-              className="object-cover"
-              priority
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
-          </div>
+    <section id="contact" className="relative scroll-mt-24 overflow-hidden py-16 md:py-24">
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <Image
+          src={CONTACT_BG}
+          alt=""
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a18]/92 via-[#252522]/88 to-[#222221]/94" />
+      </div>
 
-          <div className="absolute inset-0 flex items-start md:items-center z-10 rounded-[2.5rem]">
-            <div className="w-full max-w-[900px] mx-auto px-3 md:px-8 py-6 md:py-12">
-              <div className="backdrop-blur-xl bg-white/20 border border-white/30 rounded-[30px] p-5 md:p-12 shadow-2xl w-full">
-                <div className="text-center mb-8">
-                  <h2
-                    className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4"
-
-                  >
-                    {contact.title}
-                  </h2>
-                  <p
-                    className="text-white text-base drop-shadow-md"
-
-                  >
-                    {contact.subtitle}
-                  </p>
-                  <div className="mt-4 flex flex-col sm:flex-row gap-3 justify-center flex-wrap">
-                    <a
-                      href={siteLinks.payment}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex justify-center items-center bg-[#F9DC0A] hover:bg-[#e5ca09] text-[#222221] font-semibold px-6 py-2.5 rounded-lg transition-all text-sm sm:text-base"
-
-                    >
-                      {contact.payButton}
-                    </a>
-                    <a
-                      href={siteLinks.telegramChannel}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex justify-center items-center border border-white/60 text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-white/10 text-sm sm:text-base"
-
-                    >
-                      {contact.telegramButton}
-                    </a>
-                  </div>
-                </div>
-
-                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
-                  {submitStatus.type && (
-                    <div
-                      className={`p-4 rounded-lg ${
-                        submitStatus.type === "success"
-                          ? "bg-green-500/20 border border-green-500/50 text-green-100"
-                          : "bg-red-500/20 border border-red-500/50 text-red-100"
-                      }`}
-                    >
-                      <p
-                        className="text-sm font-medium"
-
-                      >
-                        {submitStatus.message}
-                      </p>
-                    </div>
-                  )}
-
-                  <div className="grid md:grid-cols-2 gap-4 md:gap-6">
-                    <div>
-                      <label
-                        className="block text-white text-xs font-semibold mb-2 uppercase tracking-wider drop-shadow-md"
-
-                      >
-                        {contact.labels.fullName}
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={formData.fullName}
-                        onChange={(e) =>
-                          setFormData({ ...formData, fullName: e.target.value })
-                        }
-                        className="w-full px-4 py-3.5 backdrop-blur-md bg-white/30 border border-white/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/60 text-white placeholder:text-white/70 transition-all"
-                        placeholder={contact.placeholders.fullName}
-
-                      />
-                    </div>
-                    <div>
-                      <label
-                        className="block text-white text-xs font-semibold mb-2 uppercase tracking-wider drop-shadow-md"
-
-                      >
-                        {contact.labels.phone}
-                      </label>
-                      <input
-                        type="tel"
-                        required
-                        value={formData.phone}
-                        onChange={(e) =>
-                          setFormData({ ...formData, phone: e.target.value })
-                        }
-                        className="w-full px-4 py-3.5 backdrop-blur-md bg-white/30 border border-white/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/60 text-white placeholder:text-white/70 transition-all"
-                        placeholder={contact.placeholders.phone}
-
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-4 md:gap-6">
-                    <div>
-                      <label
-                        className="block text-white text-xs font-semibold mb-2 uppercase tracking-wider drop-shadow-md"
-
-                      >
-                        {contact.labels.email}
-                      </label>
-                      <input
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
-                        className="w-full px-4 py-3.5 backdrop-blur-md bg-white/30 border border-white/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/60 text-white placeholder:text-white/70 transition-all"
-                        placeholder={contact.placeholders.email}
-
-                      />
-                    </div>
-                    <div>
-                      <label
-                        className="block text-white text-xs font-semibold mb-2 uppercase tracking-wider drop-shadow-md"
-
-                      >
-                        {contact.labels.topic}
-                      </label>
-                      <select
-                        value={formData.service}
-                        onChange={(e) =>
-                          setFormData({ ...formData, service: e.target.value })
-                        }
-                        className="w-full px-4 py-3.5 backdrop-blur-md bg-white/30 border border-white/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/60 text-white transition-all"
-
-                      >
-                        {contact.serviceOptions.map((opt) => (
-                          <option
-                            key={opt.value}
-                            value={opt.value}
-                            className="text-[#222221]"
-                          >
-                            {opt.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      className="block text-white text-xs font-semibold mb-2 uppercase tracking-wider drop-shadow-md"
-
-                    >
-                      {contact.labels.comment}
-                    </label>
-                    <textarea
-                      value={formData.taskDescription}
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          taskDescription: e.target.value,
-                        })
-                      }
-                      className="w-full px-4 py-3.5 backdrop-blur-md bg-white/30 border border-white/40 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/60 text-white placeholder:text-white/70 transition-all resize-none"
-                      placeholder={contact.placeholders.comment}
-                      rows={4}
-
-                    />
-                  </div>
-
-                  <div className="space-y-3 md:space-y-4 pt-4 md:pt-6 border-t border-white/30">
-                    <div>
-                      <label
-                        className="block text-white text-sm font-semibold mb-3 drop-shadow-md"
-
-                      >
-                        {contact.labels.preferredContact}
-                      </label>
-                      <div className="flex flex-wrap gap-6">
-                        {PREFERRED_KEYS.map((key) => (
-                          <label
-                            key={key}
-                            className="flex items-center cursor-pointer"
-                          >
-                            <input
-                              type="radio"
-                              name="preferredContact"
-                              value={key}
-                              checked={formData.preferredContact === key}
-                              onChange={() =>
-                                setFormData({
-                                  ...formData,
-                                  preferredContact: key,
-                                })
-                              }
-                              className="mr-2 w-4 h-4 text-white focus:ring-white/50 accent-white"
-                            />
-                            <span
-                              className="text-white text-sm drop-shadow-md"
-
-                            >
-                              {contact.contactMethods[key]}
-                            </span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-4 pt-4 md:pt-6">
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="backdrop-blur-md bg-white/40 hover:bg-white/50 border border-white/50 text-[#222221] font-semibold px-10 py-3.5 rounded-lg transition-all uppercase tracking-wider order-2 md:order-1 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
-
-                    >
-                      {isSubmitting ? contact.submitting : contact.submit}
-                    </button>
-                    <label className="flex items-start cursor-pointer order-1 md:order-2 gap-2">
-                      <input
-                        type="checkbox"
-                        checked={privacyAgreed}
-                        onChange={(e) => setPrivacyAgreed(e.target.checked)}
-                        className="mt-1 w-4 h-4 text-white focus:ring-white/50 accent-white shrink-0"
-                      />
-                      <span
-                        className="text-white text-sm drop-shadow-md text-left"
-
-                      >
-                        {contact.privacyCheckbox}
-                      </span>
-                    </label>
-                  </div>
-                </form>
-              </div>
+      <div className="relative z-10 mx-auto max-w-6xl px-4 md:px-6">
+        <div className="overflow-hidden rounded-[2rem] border border-white/15 bg-white shadow-[0_25px_80px_-12px_rgba(0,0,0,0.45)] md:flex md:min-h-[560px] md:rounded-[2rem]">
+          {/* Ліва колонка — акцент */}
+          <aside className="relative flex flex-col justify-between bg-gradient-to-b from-[#222221] to-[#2e2e2a] px-8 py-10 md:w-[42%] md:max-w-md md:px-10 md:py-12">
+            <div className="absolute right-0 top-0 h-32 w-32 rounded-bl-full bg-[#F9DC0A]/10 blur-2xl" aria-hidden />
+            <div>
+              <h2 className="text-3xl font-bold leading-tight text-white md:text-4xl">
+                {contact.title}
+              </h2>
+              <p className="mt-4 text-sm leading-relaxed text-white/85 md:text-base">
+                {contact.subtitle}
+              </p>
             </div>
+            <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-8 md:mt-0 md:border-0 md:pt-0">
+              <a
+                href={siteLinks.payment}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-xl bg-[#F9DC0A] px-5 py-3.5 text-center text-sm font-semibold text-[#222221] shadow-lg transition hover:bg-[#e5ca09]"
+              >
+                {contact.payButton}
+              </a>
+              <a
+                href={siteLinks.telegramChannel}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-xl border-2 border-white/25 bg-white/5 px-5 py-3.5 text-center text-sm font-semibold text-white transition hover:border-white/40 hover:bg-white/10"
+              >
+                {contact.telegramButton}
+              </a>
+            </div>
+          </aside>
+
+          {/* Форма */}
+          <div className="flex-1 bg-white px-6 py-10 md:px-10 md:py-12">
+            <p className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-[#6F6F6E]">
+              {contact.formHeader}
+            </p>
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {submitStatus.type && (
+                <div
+                  role="alert"
+                  className={`rounded-xl border px-4 py-3 text-sm font-medium ${
+                    submitStatus.type === "success"
+                      ? "border-emerald-200 bg-emerald-50 text-emerald-900"
+                      : "border-red-200 bg-red-50 text-red-900"
+                  }`}
+                >
+                  {submitStatus.message}
+                </div>
+              )}
+
+              <div className="grid gap-5 md:grid-cols-2">
+                <div>
+                  <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#222221]">
+                    {contact.labels.fullName}
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={formData.fullName}
+                    onChange={(e) =>
+                      setFormData({ ...formData, fullName: e.target.value })
+                    }
+                    className={inputClass}
+                    placeholder={contact.placeholders.fullName}
+                    autoComplete="name"
+                  />
+                </div>
+                <div>
+                  <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#222221]">
+                    {contact.labels.phone}
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    value={formData.phone}
+                    onChange={(e) =>
+                      setFormData({ ...formData, phone: e.target.value })
+                    }
+                    className={inputClass}
+                    placeholder={contact.placeholders.phone}
+                    autoComplete="tel"
+                  />
+                </div>
+              </div>
+
+              <div className="grid gap-5 md:grid-cols-2">
+                <div>
+                  <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#222221]">
+                    {contact.labels.email}
+                  </label>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                    className={inputClass}
+                    placeholder={contact.placeholders.email}
+                    autoComplete="email"
+                  />
+                </div>
+                <div>
+                  <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#222221]">
+                    {contact.labels.topic}
+                  </label>
+                  <select
+                    value={formData.service}
+                    onChange={(e) =>
+                      setFormData({ ...formData, service: e.target.value })
+                    }
+                    className={`${inputClass} cursor-pointer appearance-none bg-[length:1rem] bg-[right_0.75rem_center] bg-no-repeat pr-10`}
+                    style={{
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236F6F6E'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
+                    }}
+                  >
+                    {contact.serviceOptions.map((opt) => (
+                      <option key={opt.value} value={opt.value}>
+                        {opt.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#222221]">
+                  {contact.labels.comment}
+                </label>
+                <textarea
+                  value={formData.taskDescription}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      taskDescription: e.target.value,
+                    })
+                  }
+                  className={`${inputClass} resize-none`}
+                  placeholder={contact.placeholders.comment}
+                  rows={4}
+                />
+              </div>
+
+              <div className="rounded-xl bg-[#F5F5F0] p-4 md:p-5">
+                <label className="mb-3 block text-sm font-semibold text-[#222221]">
+                  {contact.labels.preferredContact}
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {PREFERRED_KEYS.map((key) => {
+                    const active = formData.preferredContact === key;
+                    return (
+                      <label
+                        key={key}
+                        className={`cursor-pointer rounded-full border px-3 py-2 text-sm font-medium transition-all ${
+                          active
+                            ? "border-[#222221] bg-[#222221] text-white shadow-md"
+                            : "border-[#D8D8D2] bg-white text-[#222221] hover:border-[#F9DC0A]/80"
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          name="preferredContact"
+                          value={key}
+                          checked={active}
+                          onChange={() =>
+                            setFormData({
+                              ...formData,
+                              preferredContact: key,
+                            })
+                          }
+                          className="sr-only"
+                        />
+                        {contact.contactMethods[key]}
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-4 border-t border-[#E8E8E2] pt-6 md:flex-row md:items-start md:justify-between">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="order-2 w-full rounded-xl bg-[#222221] px-8 py-4 text-sm font-semibold uppercase tracking-wider text-white shadow-lg transition hover:bg-[#3a3a39] disabled:cursor-not-allowed disabled:opacity-50 md:order-1 md:w-auto"
+                >
+                  {isSubmitting ? contact.submitting : contact.submit}
+                </button>
+                <label className="order-1 flex cursor-pointer items-start gap-3 md:order-2 md:max-w-md">
+                  <input
+                    type="checkbox"
+                    checked={privacyAgreed}
+                    onChange={(e) => setPrivacyAgreed(e.target.checked)}
+                    className="mt-1 h-4 w-4 shrink-0 rounded border-[#D8D8D2] text-[#222221] focus:ring-[#F9DC0A]"
+                  />
+                  <span className="text-left text-sm leading-snug text-[#444443]">
+                    {contact.privacyCheckbox}
+                  </span>
+                </label>
+              </div>
+            </form>
           </div>
         </div>
       </div>
